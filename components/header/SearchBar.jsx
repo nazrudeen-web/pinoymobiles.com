@@ -1,14 +1,30 @@
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 
-export default function SearchBar() {
+export default function SearchBar({
+  placeholder = "Search phones...",
+  className,
+  inputClassName,
+}) {
   return (
-    <div className="relative w-full max-w-sm">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+    <div
+      className={cn(
+        "relative flex w-full items-center rounded-xl border border-slate-200 bg-slate-50 transition-all focus-within:border-violet-300 focus-within:bg-white focus-within:ring-2 focus-within:ring-violet-100",
+        className
+      )}
+    >
+      <span className="pointer-events-none flex items-center pl-3.5 text-slate-400">
+        <Search className="h-4 w-4" />
+      </span>
       <Input
         type="text"
-        placeholder="Search mobiles..."
-        className="pl-10 rounded-full"
+        placeholder={placeholder}
+        className={cn(
+          "h-10 flex-1 rounded-xl border-0 bg-transparent text-sm font-medium text-slate-900 focus-visible:ring-0",
+          "pl-2 pr-4 placeholder:text-slate-400",
+          inputClassName
+        )}
       />
     </div>
   );
