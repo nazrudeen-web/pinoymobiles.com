@@ -7,23 +7,23 @@ export default function LatestPhones() {
 
   return (
     <PhoneCarousel
-      label="Hot & New"
-      labelIcon="🔥"
-      labelColor="text-orange-600"
-      title="Latest Releases"
+      label="🔥 Hot sa TikTok"
+      labelIcon=""
+      labelColor="text-[#DC2626]"
+      title="Bagong Labas na Phones"
       viewAllHref="/phones"
-      mobileViewAllText="View All Latest Phones"
+      mobileViewAllText="Tingnan Lahat ng Bago"
     >
       {latest.map((phone, index) => (
         <CarouselPhoneCard
           key={phone.slug}
           phone={phone}
           index={index}
-          badge="🔥 NEW"
-          badgeColors="bg-orange-100 border-orange-300 text-orange-700"
+          badge="🔥 BAGO"
+          badgeColors="bg-linear-to-r from-[#DC2626]/10 to-orange-100 border-[#DC2626]/30 text-[#DC2626]"
           imageColors="from-orange-50 to-red-50"
-          hoverColor="hover:border-orange-300 group-hover:text-orange-600"
-          priceColor="text-orange-600"
+          hoverColor="hover:border-[#DC2626]/40 group-hover:text-[#DC2626]"
+          priceColor="text-[#DC2626]"
           subtitle="Dec 2024"
         />
       ))}

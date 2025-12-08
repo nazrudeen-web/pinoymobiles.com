@@ -11,25 +11,26 @@ export default function PopularPhones() {
 
   return (
     <PhoneCarousel
-      label="Loved"
-      labelIcon="💖"
-      labelColor="text-pink-600"
-      title="Popular Mobiles Filipino Buyers Love"
+      label="💖 Pinoy Favorites"
+      labelIcon=""
+      labelColor="text-[#6C2BD9]"
+      title="Most Loved sa Pilipinas"
       viewAllHref="/phones"
-      viewAllText="View All"
-      mobileViewAllText="View All Popular Phones"
+      viewAllText="Tingnan Lahat"
+      mobileViewAllText="Tingnan Lahat ng Paborito"
     >
       {popular.map((phone, index) => (
         <CarouselPhoneCard
           key={phone.slug}
           phone={phone}
           index={index}
-          badge="💖 Loved"
-          badgeColors="bg-pink-100 border-pink-300 text-pink-700"
-          imageColors="from-pink-50 to-rose-50"
-          hoverColor="hover:border-pink-300 group-hover:text-pink-600"
-          priceColor="text-pink-600"
-          subtitle="Popular choice"
+          badge="💖 Paborito"
+          badgeColors="bg-[#6C2BD9]/10 border-[#6C2BD9]/30 text-[#6C2BD9]"
+          imageColors="from-[#6C2BD9]/5 to-[#F9B434]/5"
+          hoverColor="hover:border-[#6C2BD9]/40 group-hover:text-[#6C2BD9]"
+          priceColor="text-[#6C2BD9]"
+          subtitle="Pinoy Choice"
+          showTrustedBadge={true}
         />
       ))}
     </PhoneCarousel>

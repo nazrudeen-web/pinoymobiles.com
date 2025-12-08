@@ -3,28 +3,38 @@ import { ArrowRight } from "lucide-react";
 
 const quickCategories = [
   {
-    name: "Budget",
+    name: "Sulit",
     icon: "💰",
     href: "/phones?category=budget",
-    color: "bg-emerald-50 hover:bg-emerald-100 border-emerald-200",
+    color:
+      "bg-[#4CB9A8]/10 hover:bg-[#4CB9A8]/20 border-[#4CB9A8]/30 text-[#3B9C8D]",
   },
   {
     name: "Gaming",
     icon: "🎮",
     href: "/phones?category=gaming",
-    color: "bg-purple-50 hover:bg-purple-100 border-purple-200",
+    color:
+      "bg-[#6C2BD9]/10 hover:bg-[#6C2BD9]/20 border-[#6C2BD9]/30 text-[#6C2BD9]",
   },
   {
     name: "Flagship",
     icon: "👑",
     href: "/phones?category=flagship",
-    color: "bg-amber-50 hover:bg-amber-100 border-amber-200",
+    color:
+      "bg-[#F9B434]/10 hover:bg-[#F9B434]/20 border-[#F9B434]/30 text-[#E5A020]",
   },
   {
     name: "Camera",
     icon: "📷",
     href: "/phones?category=camera",
-    color: "bg-pink-50 hover:bg-pink-100 border-pink-200",
+    color: "bg-pink-50 hover:bg-pink-100 border-pink-200 text-pink-600",
+  },
+  {
+    name: "Hot TikTok",
+    icon: "🔥",
+    href: "/phones?category=trending",
+    color:
+      "bg-[#DC2626]/10 hover:bg-[#DC2626]/20 border-[#DC2626]/30 text-[#DC2626]",
   },
 ];
 
@@ -32,13 +42,13 @@ export default function QuickCategories() {
   return (
     <>
       <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-        Quick Filters:
+        Mabilisang Hanap:
       </span>
       {quickCategories.map((cat) => (
         <Link
           key={cat.name}
           href={cat.href}
-          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:shadow-sm ${cat.color}`}
+          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:shadow-sm sari-sari-glow ${cat.color}`}
         >
           <span>{cat.icon}</span>
           {cat.name}
@@ -46,9 +56,9 @@ export default function QuickCategories() {
       ))}
       <Link
         href="/phones"
-        className="inline-flex items-center gap-1 text-xs font-semibold text-violet-600 hover:text-violet-700 transition-colors"
+        className="inline-flex items-center gap-1 text-xs font-semibold text-[#6C2BD9] hover:text-[#5521B0] transition-colors"
       >
-        View all
+        Tingnan lahat
         <ArrowRight className="h-3 w-3" />
       </Link>
     </>

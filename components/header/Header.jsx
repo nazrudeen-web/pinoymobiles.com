@@ -5,6 +5,7 @@ import { Menu, Search, Heart, Bell, ChevronDown, Sparkles } from "lucide-react";
 import Logo from "./Logo";
 import NavMenu from "./Nav-Menu";
 import SearchBar from "./SearchBar";
+import PhFlag from "@/components/ui/PhFlag";
 import {
   buttonVariants,
   buttonSizes,
@@ -14,19 +15,22 @@ import {
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full font-mona bg-white shadow-md">
-      {/* Top Promo Bar */}
-      <div className="hidden md:block bg-linear-to-r from-violet-600 via-purple-600 to-indigo-600">
+      {/* Top Promo Bar - Filipino themed */}
+      <div className="hidden md:block bg-linear-to-r from-[#6C2BD9] via-[#5521B0] to-[#6C2BD9]">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-2.5 text-sm text-white">
-          <Sparkles className="h-4 w-4 shrink-0" />
+          <PhFlag className="w-5 h-4" />
           <span className="font-medium">
-            Compare prices from 6,300+ trusted Philippine sellers
+            I-compare ang prices mula sa{" "}
+            <span className="text-[#F9B434] font-bold">
+              6,300+ Verified PH Sellers
+            </span>
           </span>
           <span className="hidden lg:inline text-white/70 mx-2">•</span>
           <Link
             href="/compare"
-            className="hidden lg:inline-flex items-center gap-1.5 font-semibold hover:underline underline-offset-2 hover:text-white/90 transition-colors"
+            className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-[#F9B434] hover:text-[#FCD34D] underline-offset-2 transition-colors"
           >
-            Quick Compare
+            I-Compare Ngayon
             <ChevronDown className="h-3 w-3 -rotate-90" />
           </Link>
         </div>
@@ -69,15 +73,15 @@ export default function Header() {
                   </div>
 
                   {/* Mobile CTA */}
-                  <div className="mt-auto border-t border-slate-100 px-5 py-4 bg-linear-to-r from-violet-50 to-purple-50">
+                  <div className="mt-auto border-t border-slate-100 px-5 py-4 bg-linear-to-r from-[#6C2BD9]/5 to-[#F9B434]/5">
                     <p className="text-xs text-slate-600 mb-3 font-medium">
-                      🔔 Get instant price-drop alerts
+                      🔔 Mag-subscribe sa price-drop alerts
                     </p>
                     <Button
-                      className="w-full rounded-lg bg-linear-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold shadow-lg shadow-violet-600/30 px-4 py-2.5 transition-all active:scale-95"
+                      className="w-full rounded-lg bg-linear-to-r from-[#6C2BD9] to-[#5521B0] hover:from-[#5521B0] hover:to-[#6C2BD9] text-white font-semibold shadow-lg shadow-[#6C2BD9]/30 px-4 py-2.5 transition-all active:scale-95"
                       size="md"
                     >
-                      <Bell className="mr-2 h-4 w-4" /> Enable Alerts
+                      <Bell className="mr-2 h-4 w-4" /> I-Enable ang Alerts
                     </Button>
                   </div>
                 </div>
@@ -116,13 +120,13 @@ export default function Header() {
               className="hidden md:flex h-10 w-10 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 relative transition-colors"
             >
               <Heart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-violet-600 text-[10px] font-bold text-white flex items-center justify-center shadow-sm">
+              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-[#6C2BD9] text-[10px] font-bold text-white flex items-center justify-center shadow-sm">
                 3
               </span>
             </Button>
 
-            {/* CTA Button - Enhanced */}
-            <Button className="hidden sm:inline-flex rounded-lg px-4 h-10 bg-linear-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition-all active:scale-95">
+            {/* CTA Button - Filipino Enhanced */}
+            <Button className="hidden sm:inline-flex rounded-lg px-4 h-10 bg-linear-to-r from-[#6C2BD9] to-[#5521B0] hover:from-[#5521B0] hover:to-[#6C2BD9] text-sm font-semibold text-white shadow-lg shadow-[#6C2BD9]/30 transition-all active:scale-95 jeepney-shine">
               <Bell className="mr-2 h-4 w-4" />
               <span className="hidden lg:inline">Price Alerts</span>
               <span className="lg:hidden">Alerts</span>

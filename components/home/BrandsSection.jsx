@@ -37,22 +37,22 @@ export default function BrandsHorizontal() {
     <section className="mx-auto mt-16 w-full max-w-7xl px-4 md:px-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-            🛒 Shop by Brand
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#6C2BD9]">
+            🛒 Pinoy Best Sellers
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Top Brands Pinoys Buy Every Day
+            Top Brands na Binibili ng Pinoy
           </h2>
           <p className="mt-2 text-xs md:text-sm text-muted-foreground">
-            Compare prices and deals from verified sellers carrying Apple,
-            Samsung, Xiaomi, and all your favorite global brands.
+            I-compare ang prices at deals mula sa verified sellers ng Apple,
+            Samsung, Xiaomi, at iba pang paboritong brands.
           </p>
         </div>
         <div className="hidden md:flex items-center gap-2">
           <button
             type="button"
             onClick={() => scroll("left")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 text-slate-600" />
@@ -60,7 +60,7 @@ export default function BrandsHorizontal() {
           <button
             type="button"
             onClick={() => scroll("right")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 text-slate-600" />
@@ -81,7 +81,7 @@ export default function BrandsHorizontal() {
               className="shrink-0 w-[calc(25%-9px)] md:w-[calc(20%-12px)] lg:w-[calc(16.666%-10px)] snap-start"
             >
               <div
-                className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 ${
+                className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 pinoy-card-hover ${
                   brandColors[brand] || "hover:bg-slate-100"
                 }`}
               >
@@ -107,9 +107,9 @@ export default function BrandsHorizontal() {
       <div className="mt-6 flex items-center justify-center md:justify-start">
         <Link
           href="/phones"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors shadow-md hover:shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-[#6C2BD9] to-[#5521B0] hover:from-[#5521B0] hover:to-[#6C2BD9] text-white text-sm font-semibold transition-colors shadow-lg shadow-[#6C2BD9]/30 hover:shadow-[#6C2BD9]/50 jeepney-shine"
         >
-          Browse All Brands
+          Tingnan Lahat ng Brands
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

@@ -7,13 +7,13 @@ import { upcomingPhones } from "@/lib/data/phones";
 export default function UpcomingPhones() {
   return (
     <PhoneCarousel
-      label="Coming soon"
-      labelIcon="⏰"
-      labelColor="text-blue-600"
-      title="Upcoming Releases"
+      label="⏰ Abangan!"
+      labelIcon=""
+      labelColor="text-[#1F2A44]"
+      title="Mga Paparating na Phones"
       viewAllHref="/phones"
-      viewAllText="View All"
-      mobileViewAllText="View All Upcoming Phones"
+      viewAllText="Tingnan Lahat"
+      mobileViewAllText="Tingnan Lahat ng Paparating"
     >
       {upcomingPhones.map((phone, index) => (
         <UpcomingPhoneCard key={phone.slug} phone={phone} index={index} />

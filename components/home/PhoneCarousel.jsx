@@ -7,10 +7,10 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 export default function PhoneCarousel({
   label,
   labelIcon,
-  labelColor = "text-orange-600",
+  labelColor = "text-[#6C2BD9]",
   title,
   viewAllHref = "/phones",
-  viewAllText = "View All",
+  viewAllText = "Tingnan Lahat",
   mobileViewAllText,
   children,
 }) {
@@ -45,7 +45,7 @@ export default function PhoneCarousel({
           <button
             type="button"
             onClick={() => scroll("left")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 text-slate-600" />
@@ -53,7 +53,7 @@ export default function PhoneCarousel({
           <button
             type="button"
             onClick={() => scroll("right")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 text-slate-600" />

@@ -34,18 +34,18 @@ export default function ComparisonPromo() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-            ⚔️ Compare
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#F9B434]">
+            ⚔️ I-Compare
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Quick Phone Comparisons
+            Alin ang Mas Sulit?
           </h2>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => scroll("left")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 text-slate-600" />
@@ -53,16 +53,16 @@ export default function ComparisonPromo() {
           <button
             type="button"
             onClick={() => scroll("right")}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 text-slate-600" />
           </button>
           <Link
             href="/compare"
-            className="text-sm font-medium text-blue-600 hover:text-blue-700 hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-[#6C2BD9] hover:text-[#5521B0] hidden md:flex items-center gap-1 ml-2"
           >
-            Compare All
+            I-Compare Lahat
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -86,9 +86,9 @@ export default function ComparisonPromo() {
       {/* Mobile View All Link */}
       <Link
         href="/compare"
-        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-700"
+        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#6C2BD9] hover:text-[#5521B0]"
       >
-        View All Comparisons
+        Tingnan Lahat ng Comparisons
         <ArrowRight className="h-4 w-4" />
       </Link>
     </section>

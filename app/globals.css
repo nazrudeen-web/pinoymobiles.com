@@ -43,6 +43,22 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* 🇵🇭 Premium Filipino Color Palette */
+  --color-pinoy-purple: #6c2bd9;
+  --color-pinoy-purple-dark: #5521b0;
+  --color-pinoy-purple-light: #8b5cf6;
+  --color-mango-gold: #f9b434;
+  --color-mango-gold-dark: #e5a020;
+  --color-mango-gold-light: #fcd34d;
+  --color-bayanihan-blue: #1f2a44;
+  --color-bayanihan-blue-light: #334155;
+  --color-taho-cream: #faf6ed;
+  --color-banig-beige: #efe5d0;
+  --color-pacific-green: #4cb9a8;
+  --color-pacific-green-dark: #3b9c8d;
+  --color-araw-red: #dc2626;
+  --color-sampaguita-white: #fefefe;
 }
 
 :root {
@@ -138,4 +154,174 @@
 /* Smooth horizontal scroll */
 .scrollbar-hide {
   -webkit-overflow-scrolling: touch;
+}
+
+/* ========================================
+   🇵🇭 FILIPINO-THEMED PATTERNS & EFFECTS
+   ======================================== */
+
+/* Subtle Banig Weave Pattern - Premium Filipino Background */
+.banig-pattern {
+  background-image: linear-gradient(
+      45deg,
+      rgba(108, 43, 217, 0.02) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, rgba(108, 43, 217, 0.02) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(249, 180, 52, 0.015) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(249, 180, 52, 0.015) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+}
+
+/* Sun Rays Pattern - Inspired by Philippine Flag */
+.sunrays-pattern {
+  background: radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(249, 180, 52, 0.02) 70%
+    ),
+    repeating-conic-gradient(
+      from 0deg at 50% 100%,
+      rgba(249, 180, 52, 0.015) 0deg 22.5deg,
+      transparent 22.5deg 45deg
+    );
+}
+
+/* Filipino Hero Gradient - Premium Purple to Gold subtle blend */
+.filipino-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 43, 217, 0.03) 0%,
+    rgba(250, 246, 237, 0.5) 50%,
+    rgba(249, 180, 52, 0.02) 100%
+  );
+}
+
+/* Jeepney Chrome Shine - Hover Effect */
+.jeepney-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.jeepney-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(249, 180, 52, 0.15),
+    rgba(108, 43, 217, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.jeepney-shine:hover::before {
+  left: 100%;
+}
+
+/* Tricycle Gentle Bounce - Subtle Animation */
+@keyframes tricycle-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.tricycle-bounce:hover {
+  animation: tricycle-bounce 0.4s ease-in-out;
+}
+
+/* Neon Sari-Sari Glow - Filter Chip Effect */
+.sari-sari-glow {
+  transition: all 0.3s ease;
+}
+
+.sari-sari-glow:hover {
+  box-shadow: 0 0 12px rgba(108, 43, 217, 0.25),
+    0 0 4px rgba(249, 180, 52, 0.15);
+}
+
+/* Filipino Badge Styles */
+.badge-pinoy-verified {
+  background: linear-gradient(135deg, #4cb9a8 0%, #3b9c8d 100%);
+  color: white;
+}
+
+.badge-sulit {
+  background: linear-gradient(135deg, #f9b434 0%, #e5a020 100%);
+  color: #1f2a44;
+}
+
+.badge-hot-tiktok {
+  background: linear-gradient(135deg, #6c2bd9 0%, #dc2626 100%);
+  color: white;
+}
+
+.badge-pinoy-choice {
+  background: linear-gradient(135deg, #6c2bd9 0%, #8b5cf6 100%);
+  color: white;
+}
+
+/* Premium Filipino Card Hover */
+.pinoy-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pinoy-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(108, 43, 217, 0.08),
+    0 8px 10px -6px rgba(249, 180, 52, 0.05);
+}
+
+/* Filipino Footer Pattern */
+.footer-banig {
+  background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.02) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(249, 180, 52, 0.02) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(108, 43, 217, 0.02) 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 0, 12px -12px, 0px 12px;
+}
+
+/* Mango Gold Accent Border */
+.mango-accent-border {
+  border-image: linear-gradient(90deg, #6c2bd9, #f9b434, #6c2bd9) 1;
+}
+
+/* Filipino Primary Button */
+.btn-pinoy-primary {
+  background: linear-gradient(135deg, #6c2bd9 0%, #5521b0 100%);
+  box-shadow: 0 4px 14px rgba(108, 43, 217, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-pinoy-primary:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6c2bd9 100%);
+  box-shadow: 0 6px 20px rgba(108, 43, 217, 0.45);
+  transform: translateY(-1px);
+}
+
+/* Filipino Secondary Button - Mango Gold */
+.btn-mango {
+  background: linear-gradient(135deg, #f9b434 0%, #e5a020 100%);
+  color: #1f2a44;
+  box-shadow: 0 4px 14px rgba(249, 180, 52, 0.35);
+}
+
+.btn-mango:hover {
+  background: linear-gradient(135deg, #fcd34d 0%, #f9b434 100%);
+  box-shadow: 0 6px 20px rgba(249, 180, 52, 0.45);
 }

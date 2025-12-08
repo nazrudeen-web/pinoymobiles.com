@@ -7,24 +7,25 @@ export default function BudgetPhones() {
 
   return (
     <PhoneCarousel
-      label="Best value"
-      labelIcon="💰"
-      labelColor="text-emerald-600"
-      title="Budget Phones"
+      label="💰 Sulit Picks"
+      labelIcon=""
+      labelColor="text-[#4CB9A8]"
+      title="Sulit Phones Under ₱10K"
       viewAllHref="/phones"
-      mobileViewAllText="View All Budget Phones"
+      mobileViewAllText="Tingnan Lahat ng Sulit Phones"
     >
       {budget.map((phone, index) => (
         <CarouselPhoneCard
           key={phone.slug}
           phone={phone}
           index={index}
-          badge="💰 Budget"
-          badgeColors="bg-emerald-100 border-emerald-300 text-emerald-700"
-          imageColors="from-emerald-50 to-green-50"
-          hoverColor="hover:border-emerald-300 group-hover:text-emerald-600"
-          priceColor="text-emerald-600"
+          badge="💰 SULIT"
+          badgeColors="bg-[#4CB9A8]/10 border-[#4CB9A8]/30 text-[#4CB9A8]"
+          imageColors="from-[#4CB9A8]/5 to-emerald-50"
+          hoverColor="hover:border-[#4CB9A8]/40 group-hover:text-[#4CB9A8]"
+          priceColor="text-[#4CB9A8]"
           subtitle="Best value"
+          showSulitBadge={true}
         />
       ))}
     </PhoneCarousel>

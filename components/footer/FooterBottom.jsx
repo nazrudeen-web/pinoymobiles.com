@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhFlag from "@/components/ui/PhFlag";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "#" },
@@ -9,17 +10,22 @@ const legalLinks = [
 export default function FooterBottom() {
   return (
     <div className="flex flex-col gap-4 text-xs text-white/70">
-      <p className="text-sm font-medium text-white/90">
-        Made for Filipinos, by Filipinos. 🇵🇭
-      </p>
+      <div className="flex items-center gap-2">
+        <PhFlag className="w-6 h-4" />
+        <p className="text-sm font-medium text-white">
+          Gawa ng Pinoy, para sa Pinoy. Mula sa puso!
+        </p>
+      </div>
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <p>© 2024 PinoyMobiles. All rights reserved.</p>
+        <p className="text-white/60">
+          © 2024 PinoyMobiles. Lahat ng karapatan ay nakalaan.
+        </p>
         <div className="flex gap-6">
           {legalLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="hover:text-white transition-colors"
+              className="text-white/60 hover:text-[#F9B434] transition-colors"
             >
               {link.label}
             </Link>

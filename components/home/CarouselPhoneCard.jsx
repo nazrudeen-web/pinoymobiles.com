@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star, Shield, BadgeCheck } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 
 export default function CarouselPhoneCard({
@@ -12,6 +12,8 @@ export default function CarouselPhoneCard({
   hoverColor = "hover:border-orange-300 group-hover:text-orange-600",
   priceColor = "text-orange-600",
   subtitle,
+  showTrustedBadge = false,
+  showSulitBadge = false,
 }) {
   return (
     <Link
@@ -21,7 +23,7 @@ export default function CarouselPhoneCard({
       <div
         className={`relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg ${
           hoverColor.split(" ")[0]
-        } transition-all duration-300`}
+        } transition-all duration-300 pinoy-card-hover jeepney-shine`}
       >
         {/* Badge */}
         {badge && (
@@ -30,6 +32,26 @@ export default function CarouselPhoneCard({
               className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold ${badgeColors}`}
             >
               {badge}
+            </span>
+          </div>
+        )}
+
+        {/* Trusted PH Seller Badge */}
+        {showTrustedBadge && (
+          <div className="absolute top-2 left-2 z-10">
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-[#4CB9A8] px-1.5 py-0.5 text-[8px] font-bold text-white">
+              <Shield className="w-2.5 h-2.5" />
+              Verified PH
+            </span>
+          </div>
+        )}
+
+        {/* Sulit Badge */}
+        {showSulitBadge && (
+          <div className="absolute top-2 left-2 z-10">
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-linear-to-r from-[#F9B434] to-[#E5A020] px-1.5 py-0.5 text-[8px] font-bold text-[#1F2A44]">
+              <BadgeCheck className="w-2.5 h-2.5" />
+              Sulit!
             </span>
           </div>
         )}
@@ -54,7 +76,7 @@ export default function CarouselPhoneCard({
               {phone.brand}
             </span>
             <div className="flex items-center gap-0.5">
-              <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+              <Star className="h-3 w-3 fill-[#F9B434] text-[#F9B434]" />
               <span className="text-[10px] font-semibold text-slate-700">
                 {phone.rating}
               </span>

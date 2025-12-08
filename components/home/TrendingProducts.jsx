@@ -9,13 +9,13 @@ const trending = phones.slice(0, 6);
 export default function TrendingProducts() {
   return (
     <PhoneCarousel
-      label="Trending this week"
-      labelIcon="🔥"
-      labelColor="text-violet-600"
-      title="Most Popular Phones"
+      label="🔥 Trending Ngayon"
+      labelIcon=""
+      labelColor="text-[#6C2BD9]"
+      title="Mga Sikat na Phones"
       viewAllHref="/phones"
-      viewAllText="View All"
-      mobileViewAllText="View All Phones"
+      viewAllText="Tingnan Lahat"
+      mobileViewAllText="Tingnan Lahat ng Phones"
     >
       {trending.map((phone, index) => (
         <TrendingPhoneCard key={phone.slug} phone={phone} index={index} />

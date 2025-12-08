@@ -7,9 +7,9 @@ export default function SectionHeader({
   label,
   title,
   description,
-  labelColor = "text-primary",
+  labelColor = "text-[#6C2BD9]",
   linkHref = "/phones",
-  linkText = "View All",
+  linkText = "Tingnan Lahat",
   onScrollLeft,
   onScrollRight,
   showNavigation = true,
@@ -37,7 +37,7 @@ export default function SectionHeader({
           <button
             type="button"
             onClick={onScrollLeft}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 text-slate-600" />
@@ -45,7 +45,7 @@ export default function SectionHeader({
           <button
             type="button"
             onClick={onScrollRight}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors sari-sari-glow"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 text-slate-600" />
