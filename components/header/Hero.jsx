@@ -1,55 +1,44 @@
 import { CheckCircle2 } from "lucide-react";
-import HeroSearch, { QuickStats } from "./HeroSearch";
+import HeroSearch from "./HeroSearch";
 import QuickCategories from "./QuickCategories";
-import FeatureCards from "./FeatureCards";
 
 export default function Hero() {
   return (
-    <section className="bg-linear-to-b from-white to-blue-50/30">
-      <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
-        {/* Main Hero Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-white via-blue-50/20 to-violet-50/30 border border-slate-200/60 shadow-md p-6 md:p-7">
-          {/* Background Accent */}
-          <div className="absolute -top-20 -right-20 h-40 w-40 bg-blue-200 rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-40 w-40 bg-violet-200 rounded-full opacity-10 blur-3xl" />
+    <section className="relative bg-linear-to-b from-white to-slate-50 overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute -top-20 right-0 w-60 h-60 bg-violet-100 rounded-full blur-3xl opacity-15 pointer-events-none" />
 
-          <div className="relative z-10">
-            {/* Header */}
-            <div className="mb-5">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 leading-tight">
-                Find <span className="text-violet-600">Best Phone Deals</span>{" "}
-                in the Philippines
-              </h1>
-              <TrustBadge />
-            </div>
-
-            {/* Search Bar + Quick Stats */}
-            <div className="grid md:grid-cols-3 gap-4 mb-5">
-              <HeroSearch />
-              <QuickStats />
-            </div>
-
-            <QuickCategories />
-          </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-8 md:py-10">
+        {/* Heading - Compact */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-2">
+            <span className="bg-linear-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+              Find Best Phone Deals
+            </span>
+          </h1>
+          <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto">
+            Compare prices & save money
+          </p>
         </div>
 
-        <FeatureCards />
+        {/* Search bar */}
+        <div className="mb-5">
+          <HeroSearch />
+        </div>
+
+        {/* Quick trust indicator */}
+        <div className="flex justify-center gap-4 text-xs md:text-sm text-slate-600 mb-6">
+          <span className="inline-flex items-center gap-1.5 font-medium">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            5,000+ Buyers
+          </span>
+          <span className="text-slate-300">•</span>
+          <span className="font-medium">Real-time Prices</span>
+        </div>
+
+        {/* Quick Categories - Compact */}
+        <QuickCategories />
       </div>
     </section>
-  );
-}
-
-function TrustBadge() {
-  return (
-    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-600">
-      <span className="inline-flex items-center gap-1.5 font-medium">
-        <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-        Trusted by 5,000+ Filipino buyers
-      </span>
-      <span className="text-slate-400">•</span>
-      <span className="font-medium">Updated daily</span>
-      <span className="text-slate-400">•</span>
-      <span className="font-medium">Verified sellers</span>
-    </div>
   );
 }
