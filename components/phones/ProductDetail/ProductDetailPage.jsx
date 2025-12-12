@@ -84,6 +84,22 @@ export default function ProductDetailPage({ phone, allPhones }) {
         <PricesSection phone={phone} pricesRef={pricesRef} />
 
         <section
+          id="history"
+          ref={historyRef}
+          className="scroll-mt-32 md:scroll-mt-36"
+        >
+          <div className="flex items-center gap-2 mb-3 md:mb-5">
+            <h2 className="text-base md:text-xl font-bold text-slate-900">
+              Price History
+            </h2>
+            <Info className="h-4 w-4 text-slate-400" />
+          </div>
+          <div className="bg-white rounded-xl md:rounded-2xl border border-slate-200 p-4 md:p-6">
+            <PriceHistoryChart phone={phone} />
+          </div>
+        </section>
+        {/* 
+        <section
           id="reviews"
           ref={reviewsRef}
           className="scroll-mt-32 md:scroll-mt-36"
@@ -103,23 +119,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
             <ReviewBlock phone={phone} />
           </div>
         </section>
-
-        <section
-          id="history"
-          ref={historyRef}
-          className="scroll-mt-32 md:scroll-mt-36"
-        >
-          <div className="flex items-center gap-2 mb-3 md:mb-5">
-            <h2 className="text-base md:text-xl font-bold text-slate-900">
-              Price History
-            </h2>
-            <Info className="h-4 w-4 text-slate-400" />
-          </div>
-          <div className="bg-white rounded-xl md:rounded-2xl border border-slate-200 p-4 md:p-6">
-            <PriceHistoryChart phone={phone} />
-          </div>
-        </section>
-
+*/}
         <ProductDetails phone={phone} detailsRef={detailsRef} />
 
         <section

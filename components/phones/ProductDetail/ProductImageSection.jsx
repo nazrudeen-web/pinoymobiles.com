@@ -4,7 +4,7 @@ import Link from "next/link";
 export function ProductBreadcrumb({ phone }) {
   return (
     <>
-      <div className="bg-white border-b border-slate-200 md:hidden">
+      <div className=" bg-white border-b border-slate-200 md:hidden">
         <div className="px-4 py-2.5">
           <nav className="flex items-center gap-1 text-xs text-slate-500 overflow-x-auto scrollbar-hide">
             <Link href="/" className="hover:text-violet-600 whitespace-nowrap">
@@ -25,7 +25,7 @@ export function ProductBreadcrumb({ phone }) {
         </div>
       </div>
 
-      <div className="hidden md:block px-6 pt-4">
+      <div className=" max-w-7xl mx-auto hidden md:block px-6 pt-4">
         <nav className="flex items-center gap-1.5 text-sm text-slate-500">
           <Link href="/" className="hover:text-violet-600 transition-colors">
             Home
