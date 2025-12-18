@@ -7,7 +7,7 @@ export default function SectionHeader({
   label,
   title,
   description,
-  labelColor = "text-[#6C2BD9]",
+  labelColor = "text-[#00843D]",
   linkHref = "/phones",
   linkText = "Tingnan Lahat",
   onScrollLeft,

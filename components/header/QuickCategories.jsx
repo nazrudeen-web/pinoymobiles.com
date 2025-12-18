@@ -3,25 +3,25 @@ import { ArrowRight } from "lucide-react";
 
 const quickCategories = [
   {
-    name: "Sulit",
+    name: "Best Value",
     icon: "💰",
     href: "/phones?category=budget",
     color:
-      "bg-[#4CB9A8]/10 hover:bg-[#4CB9A8]/20 border-[#4CB9A8]/30 text-[#3B9C8D]",
+      "bg-[#10B981]/10 hover:bg-[#10B981]/20 border-[#10B981]/30 text-[#059669]",
   },
   {
     name: "Gaming",
     icon: "🎮",
     href: "/phones?category=gaming",
     color:
-      "bg-[#6C2BD9]/10 hover:bg-[#6C2BD9]/20 border-[#6C2BD9]/30 text-[#6C2BD9]",
+      "bg-[#00843D]/10 hover:bg-[#00843D]/20 border-[#00843D]/30 text-[#00843D]",
   },
   {
     name: "Flagship",
     icon: "👑",
     href: "/phones?category=flagship",
     color:
-      "bg-[#F9B434]/10 hover:bg-[#F9B434]/20 border-[#F9B434]/30 text-[#E5A020]",
+      "bg-[#EF3340]/10 hover:bg-[#EF3340]/20 border-[#EF3340]/30 text-[#C41E2A]",
   },
   {
     name: "Camera",
@@ -34,7 +34,7 @@ const quickCategories = [
     icon: "🔥",
     href: "/phones?category=trending",
     color:
-      "bg-[#DC2626]/10 hover:bg-[#DC2626]/20 border-[#DC2626]/30 text-[#DC2626]",
+      "bg-[#EF3340]/10 hover:bg-[#EF3340]/20 border-[#EF3340]/30 text-[#EF3340]",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function QuickCategories() {
       ))}
       <Link
         href="/phones"
-        className="inline-flex items-center gap-1 text-xs font-semibold text-[#6C2BD9] hover:text-[#5521B0] transition-colors"
+        className="inline-flex items-center gap-1 text-xs font-semibold text-[#00843D] hover:text-[#006B31] transition-colors"
       >
         Tingnan lahat
         <ArrowRight className="h-3 w-3" />

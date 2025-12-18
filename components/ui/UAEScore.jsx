@@ -3,10 +3,10 @@
 import { Star } from "lucide-react";
 
 /**
- * Pinoy Score - The decision-making score for Filipino buyers
+ * UAE Score - The decision-making score for UAE buyers
  * Calculated from: Camera, Battery, Performance, Display, Value for Money
  */
-export default function PinoyScore({
+export default function UAEScore({
   score,
   size = "default",
   showLabel = true,
@@ -14,11 +14,11 @@ export default function PinoyScore({
   // Determine score color based on value
   const getScoreColor = (score) => {
     if (score >= 8.5)
-      return { bg: "bg-[#4CB9A8]", text: "text-[#4CB9A8]", label: "Excellent" };
+      return { bg: "bg-[#008B8B]", text: "text-[#008B8B]", label: "Excellent" };
     if (score >= 7.5)
-      return { bg: "bg-[#6C2BD9]", text: "text-[#6C2BD9]", label: "Very Good" };
+      return { bg: "bg-[#00843D]", text: "text-[#00843D]", label: "Very Good" };
     if (score >= 6.5)
-      return { bg: "bg-[#F9B434]", text: "text-[#E5A020]", label: "Good" };
+      return { bg: "bg-[#EF3340]", text: "text-[#C41E2A]", label: "Good" };
     if (score >= 5.0)
       return { bg: "bg-orange-500", text: "text-orange-500", label: "Average" };
     return { bg: "bg-slate-400", text: "text-slate-400", label: "Below Avg" };
@@ -60,7 +60,7 @@ export default function PinoyScore({
       {showLabel && (
         <div className="flex flex-col">
           <span className={`${sizeConfig.label} font-semibold text-slate-700`}>
-            Pinoy Score
+            UAE Score
           </span>
           <span className={`${sizeConfig.label} ${scoreData.text} font-medium`}>
             {scoreData.label}
@@ -72,13 +72,13 @@ export default function PinoyScore({
 }
 
 /**
- * Compact Pinoy Score for cards
+ * Compact UAE Score for cards
  */
-export function PinoyScoreBadge({ score }) {
+export function UAEScoreBadge({ score }) {
   const getScoreColor = (score) => {
-    if (score >= 8.5) return "bg-[#4CB9A8] text-white";
-    if (score >= 7.5) return "bg-[#6C2BD9] text-white";
-    if (score >= 6.5) return "bg-[#F9B434] text-[#1F2A44]";
+    if (score >= 8.5) return "bg-[#008B8B] text-white";
+    if (score >= 7.5) return "bg-[#00843D] text-white";
+    if (score >= 6.5) return "bg-[#EF3340] text-[#1A1A1A]";
     if (score >= 5.0) return "bg-orange-500 text-white";
     return "bg-slate-400 text-white";
   };
@@ -96,9 +96,9 @@ export function PinoyScoreBadge({ score }) {
 }
 
 /**
- * Full Pinoy Score breakdown for product detail page
+ * Full UAE Score breakdown for product detail page
  */
-export function PinoyScoreDetail({ phone }) {
+export function UAEScoreDetail({ phone }) {
   // Calculate individual scores (these would come from phone data in real app)
   const scores = {
     camera:
@@ -126,9 +126,9 @@ export function PinoyScoreDetail({ phone }) {
       5;
 
   const getBarColor = (score) => {
-    if (score >= 8.5) return "bg-[#4CB9A8]";
-    if (score >= 7.5) return "bg-[#6C2BD9]";
-    if (score >= 6.5) return "bg-[#F9B434]";
+    if (score >= 8.5) return "bg-[#008B8B]";
+    if (score >= 7.5) return "bg-[#00843D]";
+    if (score >= 6.5) return "bg-[#EF3340]";
     return "bg-orange-500";
   };
 
@@ -144,10 +144,10 @@ export function PinoyScoreDetail({ phone }) {
     <div className="bg-white rounded-xl border border-slate-200 p-4 md:p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-base md:text-lg font-bold text-[#1F2A44]">
-          ⭐ Pinoy Score
+        <h3 className="text-base md:text-lg font-bold text-[#1A1A1A]">
+          ⭐ UAE Score
         </h3>
-        <PinoyScore score={overallScore} size="large" showLabel={false} />
+        <UAEScore score={overallScore} size="large" showLabel={false} />
       </div>
 
       {/* Score Breakdown */}
@@ -174,8 +174,8 @@ export function PinoyScoreDetail({ phone }) {
       {/* Verdict */}
       <div className="mt-4 pt-4 border-t border-slate-100">
         <p className="text-xs text-slate-500">
-          Pinoy Score is calculated based on real-world usage, expert reviews,
-          and value for Filipino buyers.
+          UAE Score is calculated based on real-world usage, expert reviews, and
+          value for UAE buyers.
         </p>
       </div>
     </div>

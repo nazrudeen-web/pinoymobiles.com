@@ -37,15 +37,15 @@ export default function BrandsHorizontal() {
     <section className="mx-auto mt-16 w-full max-w-7xl px-4 md:px-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#6C2BD9]">
-            🛒 Pinoy Best Sellers
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#00843D]">
+            🛒 UAE Best Sellers
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Top Brands na Binibili ng Pinoy
+            Top Brands in UAE
           </h2>
           <p className="mt-2 text-xs md:text-sm text-muted-foreground">
-            I-compare ang prices at deals mula sa verified sellers ng Apple,
-            Samsung, Xiaomi, at iba pang paboritong brands.
+            Compare prices and deals from verified sellers for Apple, Samsung,
+            Xiaomi, and other popular brands.
           </p>
         </div>
         <div className="hidden md:flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function BrandsHorizontal() {
               className="shrink-0 w-[calc(25%-9px)] md:w-[calc(20%-12px)] lg:w-[calc(16.666%-10px)] snap-start"
             >
               <div
-                className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 pinoy-card-hover ${
+                className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 uae-card-hover ${
                   brandColors[brand] || "hover:bg-slate-100"
                 }`}
               >
@@ -107,7 +107,7 @@ export default function BrandsHorizontal() {
       <div className="mt-6 flex items-center justify-center md:justify-start">
         <Link
           href="/phones"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-[#6C2BD9] to-[#5521B0] hover:from-[#5521B0] hover:to-[#6C2BD9] text-white text-sm font-semibold transition-colors shadow-lg shadow-[#6C2BD9]/30 hover:shadow-[#6C2BD9]/50 jeepney-shine"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-[#00843D] to-[#006B31] hover:from-[#006B31] hover:to-[#00843D] text-white text-sm font-semibold transition-colors shadow-lg shadow-[#00843D]/30 hover:shadow-[#00843D]/50 uae-shine"
         >
           Tingnan Lahat ng Brands
           <ArrowRight className="h-4 w-4" />

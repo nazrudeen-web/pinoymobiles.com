@@ -1,3 +1,3 @@
-## pinoymobiles.com (Philippines)
+## UAEMobileGuide.com (United Arab Emirates)
 
-PinoyMobiles is the Philippines’ trusted marketplace for buying and selling mobile phones. Explore verified listings, compare prices, find affordable deals, and shop the latest smartphones from top brands. Fast, safe, and easy to use — PinoyMobiles connects Filipino buyers and sellers with the best mobile phone offers nationwide.
+UAEMobileGuide is the UAE's trusted marketplace for finding the best mobile phone deals. Explore verified listings, compare prices, find affordable deals, and shop the latest smartphones from top brands. Fast, safe, and easy to use — UAEMobileGuide connects UAE buyers with the best mobile phone offers across the Emirates.

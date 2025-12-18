@@ -12,8 +12,8 @@ export default function BrandSpotlight() {
             Trusted sellers carrying global and local favorites
           </h2>
           <p className="mt-3 text-sm text-purple-800/80">
-            Whether you love iOS or Android, PinoyMobiles helps you compare
-            offers across the brands Pinoys rely on every day.
+            Whether you love iOS or Android, UAEMobileGuide helps you compare
+            offers across the brands UAE relies on every day.
           </p>
         </div>
 

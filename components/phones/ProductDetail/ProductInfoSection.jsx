@@ -16,8 +16,8 @@ import Link from "next/link";
 import { formatCurrency } from "@/lib/format";
 import VariantSelector from "./VariantSelector";
 
-// Calculate Pinoy Score
-function calculatePinoyScore(phone) {
+// Calculate UAE Score
+function calculateUAEScore(phone) {
   let score = phone.rating || 4.0;
 
   // Adjust based on category
@@ -53,12 +53,12 @@ export function ProductInfoSection({
     ? Math.round(selectedVariant.price * 1.05)
     : highestPrice;
 
-  const pinoyScore = calculatePinoyScore(phone);
-  const isRecommended = parseFloat(pinoyScore) >= 4.5;
+  const uaeScore = calculateUAEScore(phone);
+  const isRecommended = parseFloat(uaeScore) >= 4.5;
 
   return (
     <div className="lg:col-span-7">
-      {/* Pinoy Score & Rating Row */}
+      {/* UAE Score & Rating Row */}
       <div className="flex items-center justify-between gap-4 mb-4">
         <div className="flex items-center gap-3">
           {/* Star Rating */}
@@ -73,33 +73,30 @@ export function ProductInfoSection({
           </span>
           <Link
             href="#reviews"
-            className="text-sm text-[#6C2BD9] hover:underline hidden md:inline"
+            className="text-sm text-[#00843D] hover:underline hidden md:inline"
           >
             847 reviews
           </Link>
         </div>
 
-        {/* Pinoy Score Badge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#6C2BD9] to-[#5521B0]">
-          <Award className="h-4 w-4 text-[#F9B434]" />
+        {/* UAE Score Badge */}
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#00843D] to-[#006B31]">
+          <Award className="h-4 w-4 text-[#EF3340]" />
           <span className="text-sm font-bold text-white">
-            {pinoyScore} Pinoy Score
+            {uaeScore} UAE Score
           </span>
         </div>
       </div>
-
       {/* Phone Name */}
       <h1 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 leading-tight">
         {phone.name}
       </h1>
-
       {/* Quick Specs */}
       <p className="text-sm text-slate-500 mb-4">
         {selectedVariant?.storage || phone.specs?.storage || "256GB"} •{" "}
         {phone.specs?.ram || "8GB RAM"} •{" "}
         {phone.specs?.display?.split(",")[0] || '6.7" Display'}
       </p>
-
       {/* Verdict Badge */}
       {isRecommended && (
         <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 mb-4">
@@ -115,7 +112,6 @@ export function ProductInfoSection({
           </div>
         </div>
       )}
-
       {/* Variant Selector */}
       {phone.variants && phone.variants.length > 0 && (
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4">
@@ -127,9 +123,8 @@ export function ProductInfoSection({
           />
         </div>
       )}
-
       {/* Price Box */}
-      <div className="bg-gradient-to-br from-[#6C2BD9]/5 to-[#F9B434]/5 border border-[#6C2BD9]/20 rounded-xl p-4 mb-4">
+      <div className="bg-gradient-to-br from-[#00843D]/5 to-[#EF3340]/5 border border-[#00843D]/20 rounded-xl p-4 mb-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">
             Best Price Today
@@ -141,7 +136,7 @@ export function ProductInfoSection({
           </span>
         </div>
         <div className="flex items-baseline gap-2">
-          <span className="text-2xl md:text-3xl font-bold text-[#6C2BD9]">
+          <span className="text-2xl md:text-3xl font-bold text-[#00843D]">
             {formatCurrency(variantLowestPrice)}
           </span>
           <span className="text-sm text-slate-400">to</span>
@@ -153,7 +148,6 @@ export function ProductInfoSection({
           From {retailersCount} verified sellers • Prices updated today
         </p>
       </div>
-
       {/* Quick Pros & Cons */}
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-100">
@@ -193,30 +187,28 @@ export function ProductInfoSection({
           </ul>
         </div>
       </div>
-
       {/* Trust Badges */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
         <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50">
-          <Package className="h-4 w-4 text-[#6C2BD9] shrink-0" />
+          <Package className="h-4 w-4 text-[#00843D] shrink-0" />
           <span className="text-xs text-slate-600">Free shipping</span>
         </div>
         <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50">
-          <Clock className="h-4 w-4 text-[#6C2BD9] shrink-0" />
+          <Clock className="h-4 w-4 text-[#00843D] shrink-0" />
           <span className="text-xs text-slate-600">1-5 days</span>
         </div>
         <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50">
-          <ShieldCheck className="h-4 w-4 text-[#6C2BD9] shrink-0" />
+          <ShieldCheck className="h-4 w-4 text-[#00843D] shrink-0" />
           <span className="text-xs text-slate-600">Verified sellers</span>
         </div>
         <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50">
-          <Zap className="h-4 w-4 text-[#6C2BD9] shrink-0" />
+          <Zap className="h-4 w-4 text-[#00843D] shrink-0" />
           <span className="text-xs text-slate-600">Price alerts</span>
         </div>
       </div>
-
       {/* CTA Buttons */}
       <div className="hidden md:flex gap-3">
-        <button className="flex-1 bg-[#6C2BD9] hover:bg-[#5521B0] text-white py-3.5 px-6 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#6C2BD9]/20">
+        <button className="flex-1 bg-[#00843D] hover:bg-[#006B31] text-white py-3.5 px-6 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#00843D]/20">
           Compare {retailersCount} Prices
           <ChevronDown className="h-5 w-5" />
         </button>

@@ -11,17 +11,17 @@ export default function ComparisonCard({ comparison }) {
       href="/compare"
       className="shrink-0 w-[calc(100%-32px)] md:w-[calc(33.333%-11px)] group snap-start"
     >
-      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-[#F9B434]/50 transition-all duration-300 pinoy-card-hover">
+      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-[#EF3340]/50 transition-all duration-300 uae-card-hover">
         {/* Comparison Badge */}
         <div className="absolute top-2 right-2 z-10">
-          <span className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#F9B434] to-[#E5A020] px-2 py-1 text-[10px] font-bold text-[#1F2A44]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#EF3340] to-[#C41E2A] px-2 py-1 text-[10px] font-bold text-[#1A1A1A]">
             <Shuffle className="h-3 w-3" />
             VS
           </span>
         </div>
 
         {/* Phone Images Row */}
-        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-[#F9B434]/5 to-[#6C2BD9]/5 rounded-xl mb-3 overflow-hidden">
+        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-[#EF3340]/5 to-[#00843D]/5 rounded-xl mb-3 overflow-hidden">
           <div className="flex items-center justify-center gap-2 w-full px-2">
             {comparison.phones.slice(0, 3).map((phone, phoneIdx) => (
               <div key={phone.slug} className="relative flex-1 h-32">
@@ -33,7 +33,7 @@ export default function ComparisonCard({ comparison }) {
                   sizes="100px"
                 />
                 {phoneIdx < comparison.phones.length - 1 && (
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#F9B434] text-[#1F2A44] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#EF3340] text-[#1A1A1A] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center">
                     VS
                   </div>
                 )}
@@ -44,7 +44,7 @@ export default function ComparisonCard({ comparison }) {
 
         {/* Content */}
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-slate-900 group-hover:text-[#6C2BD9] transition-colors">
+          <h3 className="text-sm font-semibold text-slate-900 group-hover:text-[#00843D] transition-colors">
             {comparison.title}
           </h3>
           <p className="text-xs text-slate-500 line-clamp-2">
@@ -61,7 +61,7 @@ export default function ComparisonCard({ comparison }) {
                 <span className="text-slate-600 truncate max-w-[60%]">
                   {phone.name}
                 </span>
-                <span className="font-bold text-[#6C2BD9]">
+                <span className="font-bold text-[#00843D]">
                   {formatCurrency(phone.price)}
                 </span>
               </div>
@@ -75,7 +75,7 @@ export default function ComparisonCard({ comparison }) {
 
           {/* Compare Button */}
           <div className="pt-2">
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#6C2BD9] group-hover:gap-2 transition-all">
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#00843D] group-hover:gap-2 transition-all">
               I-Compare Ngayon
               <ArrowRight className="h-3 w-3" />
             </span>

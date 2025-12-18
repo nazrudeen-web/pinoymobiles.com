@@ -16,8 +16,8 @@ export default function PhonePageHeader() {
         </h1>
         <p className="mt-2 text-sm text-slate-600 max-w-3xl">
           Looking for the right mobile phone? Compare specs, prices, and reviews
-          from verified sellers across the Philippines. Use our filters to find
-          the perfect match for your needs.
+          from verified sellers across the UAE. Use our filters to find the
+          perfect match for your needs.
         </p>
       </div>
     </div>

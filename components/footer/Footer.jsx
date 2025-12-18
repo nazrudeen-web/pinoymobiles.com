@@ -5,9 +5,9 @@ import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1F2A44] text-white border-t border-slate-700/50 relative">
+    <footer className="bg-[#1A1A1A] text-white border-t border-slate-700/50 relative">
       {/* Subtle banig pattern overlay */}
-      <div className="absolute inset-0 footer-banig pointer-events-none" />
+      <div className="absolute inset-0 footer-arabic pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16">
         {/* Top Section */}

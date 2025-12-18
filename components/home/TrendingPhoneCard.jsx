@@ -9,11 +9,11 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
       href={`/phones/${phone.slug}`}
       className="shrink-0 w-[calc(50%-8px)] md:w-[calc(20%-13px)] group snap-start"
     >
-      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-[#6C2BD9]/30 transition-all duration-300 pinoy-card-hover jeepney-shine">
+      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-[#00843D]/30 transition-all duration-300 uae-card-hover uae-shine">
         {/* Badge - only for #1 */}
         {index === 0 && (
           <div className="absolute top-2 right-2 z-10">
-            <span className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#6C2BD9] to-[#DC2626] px-2 py-1 text-[10px] font-bold text-white shadow-md">
+            <span className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#00843D] to-[#EF3340] px-2 py-1 text-[10px] font-bold text-white shadow-md">
               <Flame className="h-3 w-3" />
               #1 Trending
             </span>
@@ -21,7 +21,7 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
         )}
 
         {/* Phone Image */}
-        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-[#6C2BD9]/5 to-[#F9B434]/5 rounded-xl mb-3 overflow-hidden">
+        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-[#00843D]/5 to-[#EF3340]/5 rounded-xl mb-3 overflow-hidden">
           <Image
             src={`/mobile${(index % 5) + 1}.jpg`}
             alt={phone.name}
@@ -38,19 +38,19 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
               {phone.brand}
             </span>
             <div className="flex items-center gap-0.5">
-              <Star className="h-3 w-3 fill-[#F9B434] text-[#F9B434]" />
+              <Star className="h-3 w-3 fill-[#EF3340] text-[#EF3340]" />
               <span className="text-[10px] font-semibold text-slate-700">
                 {phone.rating}
               </span>
             </div>
           </div>
 
-          <h3 className="text-sm font-semibold text-slate-900 line-clamp-2 group-hover:text-[#6C2BD9] transition-colors min-h-10">
+          <h3 className="text-sm font-semibold text-slate-900 line-clamp-2 group-hover:text-[#00843D] transition-colors min-h-10">
             {phone.name}
           </h3>
 
           <div className="pt-2 border-t border-slate-100">
-            <p className="text-lg font-bold text-[#6C2BD9]">
+            <p className="text-lg font-bold text-[#00843D]">
               {formatCurrency(phone.price)}
             </p>
             <p className="text-[10px] text-slate-500">Pinakamurang presyo</p>

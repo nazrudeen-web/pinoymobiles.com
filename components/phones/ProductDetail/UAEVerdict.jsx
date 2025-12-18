@@ -8,8 +8,8 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-// Calculate Pinoy Score based on phone attributes
-function calculatePinoyScore(phone) {
+// Calculate UAE Score based on phone attributes
+function calculateUAEScore(phone) {
   let score = 0;
   let breakdown = {
     camera: 0,
@@ -96,14 +96,14 @@ function getVerdict(phone, score) {
       bgColor: "bg-emerald-50",
       borderColor: "border-emerald-200",
       icon: Award,
-      message: `One of the best ${category.toLowerCase()} phones you can buy in the Philippines right now.`,
+      message: `One of the best ${category.toLowerCase()} phones you can buy in the UAE right now.`,
     };
   } else if (score >= 8) {
     return {
       verdict: "Worth Buying",
-      color: "text-[#6C2BD9]",
-      bgColor: "bg-[#6C2BD9]/5",
-      borderColor: "border-[#6C2BD9]/20",
+      color: "text-[#00843D]",
+      bgColor: "bg-[#00843D]/5",
+      borderColor: "border-[#00843D]/20",
       icon: ThumbsUp,
       message: `A solid choice for your budget. Great ${
         price < 20000 ? "value for money" : "flagship experience"
@@ -112,9 +112,9 @@ function getVerdict(phone, score) {
   } else if (score >= 7) {
     return {
       verdict: "Good Option",
-      color: "text-[#F9B434]",
-      bgColor: "bg-[#F9B434]/10",
-      borderColor: "border-[#F9B434]/30",
+      color: "text-[#EF3340]",
+      bgColor: "bg-[#EF3340]/10",
+      borderColor: "border-[#EF3340]/30",
       icon: TrendingUp,
       message: `Decent phone with some trade-offs. Consider comparing with alternatives.`,
     };
@@ -130,18 +130,18 @@ function getVerdict(phone, score) {
   }
 }
 
-export default function PinoyVerdict({ phone }) {
-  const { score, breakdown } = calculatePinoyScore(phone);
+export default function UAEVerdict({ phone }) {
+  const { score, breakdown } = calculateUAEScore(phone);
   const verdictData = getVerdict(phone, score);
   const VerdictIcon = verdictData.icon;
 
   const scoreCategories = [
-    { label: "Camera", value: breakdown.camera, color: "bg-[#6C2BD9]" },
-    { label: "Battery", value: breakdown.battery, color: "bg-[#4CB9A8]" },
+    { label: "Camera", value: breakdown.camera, color: "bg-[#00843D]" },
+    { label: "Battery", value: breakdown.battery, color: "bg-[#008B8B]" },
     {
       label: "Performance",
       value: breakdown.performance,
-      color: "bg-[#F9B434]",
+      color: "bg-[#EF3340]",
     },
     { label: "Display", value: breakdown.display, color: "bg-blue-500" },
     { label: "Value", value: breakdown.value, color: "bg-emerald-500" },
@@ -170,16 +170,16 @@ export default function PinoyVerdict({ phone }) {
           </p>
         </div>
 
-        {/* Pinoy Score Badge */}
+        {/* UAE Score Badge */}
         <div className="flex flex-col items-center">
           <div className="relative">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#6C2BD9] to-[#5521B0] flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#00843D] to-[#006B31] flex items-center justify-center shadow-lg">
               <span className="text-xl md:text-2xl font-bold text-white">
                 {score}
               </span>
             </div>
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-[#F9B434] text-[10px] font-bold text-white px-2 py-0.5 rounded-full whitespace-nowrap">
-              PINOY SCORE
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-[#EF3340] text-[10px] font-bold text-white px-2 py-0.5 rounded-full whitespace-nowrap">
+              UAE SCORE
             </div>
           </div>
         </div>
@@ -250,4 +250,4 @@ export default function PinoyVerdict({ phone }) {
 }
 
 // Export score calculation for use in other components
-export { calculatePinoyScore };
+export { calculateUAEScore };

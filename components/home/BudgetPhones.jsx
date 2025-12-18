@@ -8,39 +8,39 @@ import CarouselPhoneCard from "./CarouselPhoneCard";
 
 const priceRanges = [
   {
-    id: "under10k",
-    label: "Under ₱10K",
+    id: "under500",
+    label: "Under 500 AED",
     min: 0,
-    max: 10000,
+    max: 500,
   },
   {
-    id: "10k-20k",
-    label: "₱10K - ₱20K",
-    min: 10000,
-    max: 20000,
+    id: "500-1000",
+    label: "500 - 1000 AED",
+    min: 500,
+    max: 1000,
   },
   {
-    id: "20k-30k",
-    label: "₱20K - ₱30K",
-    min: 20000,
-    max: 30000,
+    id: "1000-1500",
+    label: "1000 - 1500 AED",
+    min: 1000,
+    max: 1500,
   },
   {
-    id: "30k-50k",
-    label: "₱30K - ₱50K",
-    min: 30000,
-    max: 50000,
+    id: "1500-2500",
+    label: "1500 - 2500 AED",
+    min: 1500,
+    max: 2500,
   },
   {
     id: "flagship",
-    label: "₱50K+",
-    min: 50000,
+    label: "2500+ AED",
+    min: 2500,
     max: Infinity,
   },
 ];
 
 export default function BudgetPhones() {
-  const [activeTab, setActiveTab] = useState("under10k");
+  const [activeTab, setActiveTab] = useState("under500");
   const scrollRef = useRef(null);
 
   const activeRange = priceRanges.find((r) => r.id === activeTab);
@@ -64,11 +64,11 @@ export default function BudgetPhones() {
       {/* Header - Same pattern as other sections */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#4CB9A8]">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#008B8B]">
             💰 Phones by Budget
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Sulit Phones sa Bawat Budget
+            Best Value Phones for Every Budget
           </h2>
         </div>
         <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export default function BudgetPhones() {
           </button>
           <Link
             href={`/phones?minPrice=${activeRange.min}&maxPrice=${activeRange.max}`}
-            className="text-sm font-medium text-[#4CB9A8] hover:opacity-80 hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-[#10B981] hover:opacity-80 hidden md:flex items-center gap-1 ml-2"
           >
             Tingnan Lahat
             <ArrowRight className="h-4 w-4" />
@@ -106,8 +106,8 @@ export default function BudgetPhones() {
             onClick={() => setActiveTab(range.id)}
             className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200 rounded-full border ${
               activeTab === range.id
-                ? "text-white bg-[#4CB9A8] border-[#4CB9A8] shadow-sm"
-                : "text-slate-600 bg-white border-slate-200 hover:border-[#4CB9A8]/50 hover:text-[#4CB9A8]"
+                ? "text-white bg-[#10B981] border-[#10B981] shadow-sm"
+                : "text-slate-600 bg-white border-slate-200 hover:border-[#10B981]/50 hover:text-[#10B981]"
             }`}
           >
             {range.label}
@@ -127,19 +127,21 @@ export default function BudgetPhones() {
                 key={phone.slug}
                 phone={phone}
                 index={index}
-                badge="💰 SULIT"
-                badgeColors="bg-[#4CB9A8]/10 border-[#4CB9A8]/30 text-[#4CB9A8]"
-                imageColors="from-[#4CB9A8]/5 to-emerald-50"
-                hoverColor="hover:border-[#4CB9A8]/40 group-hover:text-[#4CB9A8]"
-                priceColor="text-[#4CB9A8]"
+                badge="💰 BEST VALUE"
+                badgeColors="bg-[#10B981]/10 border-[#10B981]/30 text-[#10B981]"
+                imageColors="from-[#10B981]/5 to-emerald-50"
+                hoverColor="hover:border-[#10B981]/40 group-hover:text-[#10B981]"
+                priceColor="text-[#10B981]"
                 subtitle="Best value"
                 showSulitBadge={true}
               />
             ))
           ) : (
             <div className="w-full py-12 text-center text-slate-500">
-              <p className="text-sm">Wala pang phones sa price range na ito.</p>
-              <p className="text-xs mt-1">Check mo ulit mamaya!</p>
+              <p className="text-sm">
+                No phones available in this price range.
+              </p>
+              <p className="text-xs mt-1">Check back later!</p>
             </div>
           )}
         </div>
@@ -148,9 +150,9 @@ export default function BudgetPhones() {
       {/* Mobile View All Link */}
       <Link
         href={`/phones?minPrice=${activeRange.min}&maxPrice=${activeRange.max}`}
-        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#4CB9A8] hover:opacity-80"
+        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#10B981] hover:opacity-80"
       >
-        Tingnan Lahat ng Sulit Phones
+        View All Best Value Phones
         <ArrowRight className="h-4 w-4" />
       </Link>
     </section>

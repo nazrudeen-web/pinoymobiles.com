@@ -51,7 +51,7 @@ export function BlogContent({ blog }) {
               </p>
               <p className="text-sm text-slate-600">
                 Our team of experts reviews and compares the latest smartphones
-                to help you make informed buying decisions in the Philippines.
+                to help you make informed buying decisions in the UAE.
               </p>
             </div>
           </div>

@@ -34,11 +34,11 @@ export default function ComparisonPromo() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#F9B434]">
-            ⚔️ I-Compare
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#EF3340]">
+            ⚔️ Compare
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Alin ang Mas Sulit?
+            Which One is Better?
           </h2>
         </div>
         <div className="flex items-center gap-2">
@@ -60,7 +60,7 @@ export default function ComparisonPromo() {
           </button>
           <Link
             href="/compare"
-            className="text-sm font-medium text-[#6C2BD9] hover:text-[#5521B0] hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-[#00843D] hover:text-[#006B31] hidden md:flex items-center gap-1 ml-2"
           >
             I-Compare Lahat
             <ArrowRight className="h-4 w-4" />
@@ -86,7 +86,7 @@ export default function ComparisonPromo() {
       {/* Mobile View All Link */}
       <Link
         href="/compare"
-        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#6C2BD9] hover:text-[#5521B0]"
+        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#00843D] hover:text-[#006B31]"
       >
         Tingnan Lahat ng Comparisons
         <ArrowRight className="h-4 w-4" />

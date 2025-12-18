@@ -7,7 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 export default function PhoneCarousel({
   label,
   labelIcon,
-  labelColor = "text-[#6C2BD9]",
+  labelColor = "text-[#00843D]",
   title,
   viewAllHref = "/phones",
   viewAllText = "Tingnan Lahat",

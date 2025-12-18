@@ -132,7 +132,7 @@ export default function QuickDecision({ phone }) {
               key={i}
               className="flex items-start gap-2 text-sm text-slate-600"
             >
-              <Check className="h-4 w-4 text-[#6C2BD9] mt-0.5 shrink-0" />
+              <Check className="h-4 w-4 text-[#00843D] mt-0.5 shrink-0" />
               {highlight}
             </li>
           ))}

@@ -9,7 +9,7 @@ export default function LatestPhones() {
     <PhoneCarousel
       label="🔥 Hot sa TikTok"
       labelIcon=""
-      labelColor="text-[#DC2626]"
+      labelColor="text-[#CC0000]"
       title="Bagong Labas na Phones"
       viewAllHref="/phones"
       mobileViewAllText="Tingnan Lahat ng Bago"
@@ -20,10 +20,10 @@ export default function LatestPhones() {
           phone={phone}
           index={index}
           badge="🔥 BAGO"
-          badgeColors="bg-linear-to-r from-[#DC2626]/10 to-orange-100 border-[#DC2626]/30 text-[#DC2626]"
+          badgeColors="bg-linear-to-r from-[#CC0000]/10 to-orange-100 border-[#CC0000]/30 text-[#CC0000]"
           imageColors="from-orange-50 to-red-50"
-          hoverColor="hover:border-[#DC2626]/40 group-hover:text-[#DC2626]"
-          priceColor="text-[#DC2626]"
+          hoverColor="hover:border-[#CC0000]/40 group-hover:text-[#CC0000]"
+          priceColor="text-[#CC0000]"
           subtitle="Dec 2024"
         />
       ))}

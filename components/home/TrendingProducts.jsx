@@ -11,7 +11,7 @@ export default function TrendingProducts() {
     <PhoneCarousel
       label="🔥 Trending Ngayon"
       labelIcon=""
-      labelColor="text-[#6C2BD9]"
+      labelColor="text-[#00843D]"
       title="Mga Sikat na Phones"
       viewAllHref="/phones"
       viewAllText="Tingnan Lahat"

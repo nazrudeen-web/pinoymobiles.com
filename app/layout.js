@@ -1,9 +1,9 @@
-import { Lexend, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 
-// Lexend - Designed for readability, clean modern look
-const lexend = Lexend({
+// DM Sans - Clean, modern, professional look for UAE
+const dmSans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -19,16 +19,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "PinoyMobiles - Compare Phone Prices in the Philippines",
+  title: "UAEMobileGuide - Compare Phone Prices in UAE",
   description:
-    "Find the best phone deals from verified sellers across the Philippines. Compare specs, prices, and get instant notifications on price drops.",
+    "Find the best phone deals from verified sellers across the UAE. Compare specs, prices, and get instant notifications on price drops.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${lexend.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${dmSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <div className="flex flex-col min-h-screen">
           <div className="flex-1">{children}</div>

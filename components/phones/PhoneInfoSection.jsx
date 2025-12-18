@@ -83,7 +83,7 @@ export default function PhoneInfoSection({ phone }) {
           <span className="text-sm text-green-700">from 4 sellers</span>
         </div>
         <p className="text-xs text-slate-600 mt-2">
-          Save up to ₱3,500 vs. suggested retail price
+          Save up to AED 200 vs. suggested retail price
         </p>
       </div>
 

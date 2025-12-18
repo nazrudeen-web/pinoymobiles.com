@@ -3,7 +3,7 @@ import { Star, ThumbsUp, MessageSquare, TrendingUp } from "lucide-react";
 export default function ExpertReviews({ phone }) {
   const reviews = [
     {
-      source: "TechRadar Philippines",
+      source: "TechRadar Middle East",
       rating: 8.5,
       ratingMax: 10,
       icon: "⭐",
@@ -14,7 +14,7 @@ export default function ExpertReviews({ phone }) {
       url: "#",
     },
     {
-      source: "Unbox PH",
+      source: "Gulf News Tech",
       rating: 9,
       ratingMax: 10,
       icon: "📱",
@@ -25,7 +25,7 @@ export default function ExpertReviews({ phone }) {
       url: "#",
     },
     {
-      source: "Gadget Pilipinas",
+      source: "Gadget UAE",
       rating: 4.5,
       ratingMax: 5,
       icon: "🎯",

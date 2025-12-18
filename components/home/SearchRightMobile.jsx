@@ -20,23 +20,23 @@ const actionCards = [
     title: "All Smartphones",
     description: "Latest mobiles with reviews & prices",
     href: "/phones",
-    color: "from-[#6C2BD9] to-[#5521B0]",
-    bgColor: "bg-[#6C2BD9]/5",
-    borderColor: "border-[#6C2BD9]/20",
-    hoverColor: "hover:border-[#6C2BD9]/40",
-    iconBg: "bg-[#6C2BD9]",
+    color: "from-[#00843D] to-[#006B31]",
+    bgColor: "bg-[#00843D]/5",
+    borderColor: "border-[#00843D]/20",
+    hoverColor: "hover:border-[#00843D]/40",
+    iconBg: "bg-[#00843D]",
   },
   {
     id: "by-budget",
     icon: Wallet,
     title: "By Budget",
-    description: "Best phones under ₱10k, ₱15k, ₱20k",
+    description: "Best phones under 500, 1000, 2000 AED",
     href: "/phones?sort=budget",
-    color: "from-[#4CB9A8] to-[#3B9C8D]",
-    bgColor: "bg-[#4CB9A8]/5",
-    borderColor: "border-[#4CB9A8]/20",
-    hoverColor: "hover:border-[#4CB9A8]/40",
-    iconBg: "bg-[#4CB9A8]",
+    color: "from-[#008B8B] to-[#006B6B]",
+    bgColor: "bg-[#008B8B]/5",
+    borderColor: "border-[#008B8B]/20",
+    hoverColor: "hover:border-[#008B8B]/40",
+    iconBg: "bg-[#008B8B]",
     badge: "🔥 Popular",
   },
   {
@@ -45,11 +45,11 @@ const actionCards = [
     title: "Best for You",
     description: "Camera • Battery • Gaming • Work",
     href: "/phones?filter=purpose",
-    color: "from-[#F9B434] to-[#E5A020]",
-    bgColor: "bg-[#F9B434]/5",
-    borderColor: "border-[#F9B434]/20",
-    hoverColor: "hover:border-[#F9B434]/40",
-    iconBg: "bg-[#F9B434]",
+    color: "from-[#EF3340] to-[#C41E2A]",
+    bgColor: "bg-[#EF3340]/5",
+    borderColor: "border-[#EF3340]/20",
+    hoverColor: "hover:border-[#EF3340]/40",
+    iconBg: "bg-[#EF3340]",
     subIcons: [Camera, Battery, Gamepad2, GraduationCap],
   },
   {
@@ -58,11 +58,11 @@ const actionCards = [
     title: "Compare Phones",
     description: "Compare specs & prices side-by-side",
     href: "/compare",
-    color: "from-[#DC2626] to-[#B91C1C]",
-    bgColor: "bg-[#DC2626]/5",
-    borderColor: "border-[#DC2626]/20",
-    hoverColor: "hover:border-[#DC2626]/40",
-    iconBg: "bg-[#DC2626]",
+    color: "from-[#CC0000] to-[#B91C1C]",
+    bgColor: "bg-[#CC0000]/5",
+    borderColor: "border-[#CC0000]/20",
+    hoverColor: "hover:border-[#CC0000]/40",
+    iconBg: "bg-[#CC0000]",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function SearchRightMobile() {
     <section className="mx-auto mt-8 md:mt-10 w-full max-w-7xl px-4 md:px-6">
       {/* Section Header */}
       <div className="text-center mb-6 md:mb-8">
-        <h2 className="text-xl md:text-2xl font-bold text-[#1F2A44] mb-2">
+        <h2 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-2">
           🔍 Search the Right Mobile
         </h2>
         <p className="text-sm text-slate-500 max-w-md mx-auto">
@@ -90,7 +90,7 @@ export default function SearchRightMobile() {
           >
             {/* Badge */}
             {card.badge && (
-              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-[#DC2626] text-white text-[10px] font-bold">
+              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-[#CC0000] text-white text-[10px] font-bold">
                 {card.badge}
               </span>
             )}
@@ -103,7 +103,7 @@ export default function SearchRightMobile() {
             </div>
 
             {/* Title */}
-            <h3 className="text-sm md:text-base font-bold text-[#1F2A44] mb-1 group-hover:text-[#6C2BD9] transition-colors">
+            <h3 className="text-sm md:text-base font-bold text-[#1A1A1A] mb-1 group-hover:text-[#00843D] transition-colors">
               {card.title}
             </h3>
 
@@ -128,7 +128,7 @@ export default function SearchRightMobile() {
 
             {/* Arrow */}
             <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ArrowRight className="w-4 h-4 text-[#6C2BD9]" />
+              <ArrowRight className="w-4 h-4 text-[#00843D]" />
             </div>
           </Link>
         ))}
@@ -137,9 +137,9 @@ export default function SearchRightMobile() {
       {/* Value Proposition */}
       <div className="mt-6 md:mt-8 text-center">
         <p className="text-xs text-slate-400">
-          ✨ Helping Filipinos choose the right smartphone since 2024 •{" "}
-          <span className="text-[#4CB9A8] font-medium">6,300+ phones</span> •{" "}
-          <span className="text-[#6C2BD9] font-medium">Trusted stores</span>
+          ✨ Helping UAE choose the right smartphone since 2024 •{" "}
+          <span className="text-[#008B8B] font-medium">6,300+ phones</span> •{" "}
+          <span className="text-[#00843D] font-medium">Trusted stores</span>
         </p>
       </div>
     </section>

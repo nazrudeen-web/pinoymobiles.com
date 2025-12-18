@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PhFlag from "@/components/ui/PhFlag";
+import UAEFlag from "@/components/ui/UAEFlag";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "#" },
@@ -11,21 +11,21 @@ export default function FooterBottom() {
   return (
     <div className="flex flex-col gap-4 text-xs text-white/70">
       <div className="flex items-center gap-2">
-        <PhFlag className="w-6 h-4" />
+        <UAEFlag className="w-6 h-4" />
         <p className="text-sm font-medium text-white">
-          Gawa ng Pinoy, para sa Pinoy. Mula sa puso!
+          Made in UAE, for UAE. From the heart!
         </p>
       </div>
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <p className="text-white/60">
-          © 2024 PinoyMobiles. Lahat ng karapatan ay nakalaan.
+          © 2024 UAEMobileGuide. All rights reserved.
         </p>
         <div className="flex gap-6">
           {legalLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-white/60 hover:text-[#F9B434] transition-colors"
+              className="text-white/60 hover:text-[#EF3340] transition-colors"
             >
               {link.label}
             </Link>

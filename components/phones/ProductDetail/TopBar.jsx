@@ -34,7 +34,9 @@ export default function TopBar({ compareCount = 0 }) {
         </Link>
 
         <div className="text-center">
-          <span className="text-sm font-bold text-slate-900">PinoyMobiles</span>
+          <span className="text-sm font-bold text-slate-900">
+            UAEMobileGuide
+          </span>
         </div>
 
         <div className="flex items-center gap-2">

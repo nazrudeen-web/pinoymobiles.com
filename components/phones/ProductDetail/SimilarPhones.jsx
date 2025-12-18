@@ -20,7 +20,7 @@ export default function SimilarPhones({ currentPhone, allPhones }) {
         label="Similar"
         labelIcon="📱"
         labelColor="text-violet-600"
-        title="Similar Phones Filipino Buyers Compare"
+        title="Similar Phones UAE Buyers Compare"
         viewAllHref={`/phones?brand=${currentPhone.brand}`}
         viewAllText="View All from this Brand"
         mobileViewAllText="More similar phones"

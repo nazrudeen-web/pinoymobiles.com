@@ -370,27 +370,27 @@ function analyzeValue(phone, price) {
   let good = [];
   let bad = [];
 
-  if (price < 8000) {
+  if (price < 500) {
     score = 9;
     details.push(
-      "At under ₱8,000, this phone offers essential smartphone features at an affordable price. Best for first-time smartphone users or as a backup device."
+      "At under AED 500, this phone offers essential smartphone features at an affordable price. Best for first-time smartphone users or as a backup device."
     );
     good.push("Very affordable");
     good.push("Great starter phone");
-  } else if (price < 15000) {
+  } else if (price < 1000) {
     score = 8.5;
     details.push(
-      "This price range often offers the best value in the Philippines market - you get capable specs without overpaying for flagship features you might not need."
+      "This price range often offers the best value in the UAE market - you get capable specs without overpaying for flagship features you might not need."
     );
     good.push("Sweet spot pricing");
     good.push("Best value segment");
-  } else if (price < 25000) {
+  } else if (price < 1500) {
     score = 7.5;
     details.push(
       "Mid-range pricing that delivers premium features without the flagship tax. Good for users who want quality without spending too much."
     );
     good.push("Balanced investment");
-  } else if (price < 40000) {
+  } else if (price < 2500) {
     score = 7;
     details.push(
       "Near-flagship pricing where you get most high-end features. Consider carefully if you'll use all the premium capabilities."
@@ -531,7 +531,7 @@ const getRetailers = (basePrice) => [
     logo: "🛍️",
     price: basePrice,
     badge: "Official",
-    badgeColor: "bg-[#6C2BD9]",
+    badgeColor: "bg-[#00843D]",
     freeShipping: true,
     days: "2-5",
   },
@@ -585,7 +585,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left: Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            {/* ===== SECTION 1: PINOY VERDICT ===== */}
+            {/* ===== SECTION 1: UAE VERDICT ===== */}
             <section className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
               {/* Verdict Header */}
               <div
@@ -593,7 +593,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
                   isHighlyRec
                     ? "bg-gradient-to-r from-emerald-500 to-emerald-600"
                     : isRecommended
-                    ? "bg-gradient-to-r from-[#6C2BD9] to-[#5521B0]"
+                    ? "bg-gradient-to-r from-[#00843D] to-[#006B31]"
                     : "bg-gradient-to-r from-slate-500 to-slate-600"
                 }`}
               >
@@ -608,7 +608,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
                         <AlertCircle className="h-5 w-5 text-white/80" />
                       )}
                       <span className="text-xs font-bold text-white/80 uppercase tracking-wider">
-                        Pinoy Verdict
+                        UAE Verdict
                       </span>
                     </div>
                     <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
@@ -627,7 +627,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
                       </div>
                     </div>
                     <span className="text-[10px] font-bold text-white/70 mt-1.5 uppercase tracking-wide">
-                      Pinoy Score
+                      UAE Score
                     </span>
                   </div>
                 </div>
@@ -823,7 +823,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
 
             {/* ===== SECTION 3: COMPARE PRICES ===== */}
             <section className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-              <div className="bg-gradient-to-r from-[#6C2BD9] to-[#5521B0] px-5 py-4">
+              <div className="bg-gradient-to-r from-[#00843D] to-[#006B31] px-5 py-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs text-white/80 font-medium mb-1">
@@ -873,7 +873,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
                         <div className="flex items-center gap-2 text-xs text-slate-500">
                           <span className="flex items-center gap-1">
                             <Truck className="h-3 w-3" />
-                            {retailer.freeShipping ? "Free" : "₱50-100"}
+                            {retailer.freeShipping ? "Free" : "AED 10-20"}
                           </span>
                           <span>•</span>
                           <span className="flex items-center gap-1">
@@ -909,7 +909,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
               {retailers.length > 3 && (
                 <button
                   onClick={() => setShowAllPrices(!showAllPrices)}
-                  className="w-full py-3 text-sm font-medium text-[#6C2BD9] hover:bg-[#6C2BD9]/5 flex items-center justify-center gap-1 border-t border-slate-100"
+                  className="w-full py-3 text-sm font-medium text-[#00843D] hover:bg-[#00843D]/5 flex items-center justify-center gap-1 border-t border-slate-100"
                 >
                   {showAllPrices ? (
                     <>
@@ -943,7 +943,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
             {/* Quick Score Summary */}
             <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
               <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <Star className="h-4 w-4 text-[#F9B434]" />
+                <Star className="h-4 w-4 text-[#EF3340]" />
                 Score Breakdown
               </h3>
               <div className="space-y-3">
@@ -973,7 +973,7 @@ export default function ProductDetailPage({ phone, allPhones }) {
                 <span className="text-sm font-bold text-slate-900">
                   Overall Score
                 </span>
-                <span className="text-lg font-bold text-[#6C2BD9]">
+                <span className="text-lg font-bold text-[#00843D]">
                   {avgScore}/10
                 </span>
               </div>
@@ -982,14 +982,14 @@ export default function ProductDetailPage({ phone, allPhones }) {
             {/* Ideal For */}
             <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
               <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <Users className="h-4 w-4 text-[#6C2BD9]" />
+                <Users className="h-4 w-4 text-[#00843D]" />
                 Ideal For
               </h3>
               <div className="flex flex-wrap gap-2">
                 {verdict.idealFor.map((item, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1.5 rounded-full bg-[#6C2BD9]/10 text-[#6C2BD9] text-xs font-semibold"
+                    className="px-3 py-1.5 rounded-full bg-[#00843D]/10 text-[#00843D] text-xs font-semibold"
                   >
                     {item}
                   </span>
@@ -1044,15 +1044,15 @@ export default function ProductDetailPage({ phone, allPhones }) {
             </div>
 
             {/* Price Alert */}
-            <div className="bg-gradient-to-br from-[#F9B434]/10 to-[#F9B434]/5 rounded-xl border border-[#F9B434]/20 p-4">
+            <div className="bg-gradient-to-br from-[#EF3340]/10 to-[#FF4D5A]/5 rounded-xl border border-[#EF3340]/20 p-4">
               <h3 className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
-                <Bell className="h-4 w-4 text-[#F9B434]" />
+                <Bell className="h-4 w-4 text-[#EF3340]" />
                 Price Drop Alert
               </h3>
               <p className="text-xs text-slate-600 mb-3">
                 Get notified when price drops
               </p>
-              <button className="w-full bg-[#F9B434] hover:bg-[#E5A020] text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-colors">
+              <button className="w-full bg-[#EF3340] hover:bg-[#C41E2A] text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-colors">
                 Set Alert
               </button>
             </div>

@@ -4,7 +4,7 @@ const features = [
   {
     icon: Zap,
     title: "Real-time Prices",
-    description: "Updated hourly from verified sellers across the Philippines",
+    description: "Updated hourly from verified sellers across the UAE",
     bgColor: "from-emerald-100 to-teal-100",
     iconColor: "text-emerald-600",
   },

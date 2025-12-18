@@ -16,67 +16,68 @@ import { formatCurrency } from "@/lib/format";
 
 const retailers = [
   {
-    id: "kimstore",
-    name: "Kimstore",
+    id: "sharafdg",
+    name: "Sharaf DG",
     logo: "🏪",
     rating: 4.8,
-    reviews: 12500,
+    reviews: 18500,
     verified: true,
     freeShipping: true,
-    deliveryDays: "2-4",
+    deliveryDays: "1-3",
     priceMultiplier: 0.95,
     badge: "Best Price",
     badgeColor: "bg-emerald-500",
   },
   {
-    id: "shopee",
-    name: "Shopee Mall",
-    logo: "🛒",
-    rating: 4.7,
-    reviews: 45000,
-    verified: true,
-    freeShipping: false,
-    shippingFee: 50,
-    deliveryDays: "3-7",
-    priceMultiplier: 0.98,
-    badge: null,
-  },
-  {
-    id: "lazada",
-    name: "Lazada",
-    logo: "🛍️",
-    rating: 4.6,
-    reviews: 38000,
+    id: "amazon-ae",
+    name: "Amazon.ae",
+    logo: "📦",
+    rating: 4.9,
+    reviews: 85000,
     verified: true,
     freeShipping: true,
-    deliveryDays: "2-5",
-    priceMultiplier: 1.0,
-    badge: "Official Store",
-    badgeColor: "bg-[#6C2BD9]",
+    shippingFee: 0,
+    deliveryDays: "1-2",
+    priceMultiplier: 0.98,
+    badge: "Prime",
+    badgeColor: "bg-[#FF9900]",
   },
   {
-    id: "abenson",
-    name: "Abenson",
+    id: "noon",
+    name: "Noon",
+    logo: "🛒",
+    rating: 4.7,
+    reviews: 42000,
+    verified: true,
+    freeShipping: true,
+    deliveryDays: "1-3",
+    priceMultiplier: 1.0,
+    badge: "Express",
+    badgeColor: "bg-[#00843D]",
+  },
+  {
+    id: "jumbo",
+    name: "Jumbo Electronics",
     logo: "🏬",
-    rating: 4.5,
-    reviews: 8200,
+    rating: 4.6,
+    reviews: 12200,
     verified: true,
     freeShipping: false,
-    shippingFee: 100,
-    deliveryDays: "1-3",
+    shippingFee: 15,
+    deliveryDays: "2-4",
     priceMultiplier: 1.02,
-    badge: "Fast Delivery",
+    badge: "Official Store",
     badgeColor: "bg-blue-500",
   },
   {
-    id: "sm-appliance",
-    name: "SM Appliance",
-    logo: "🏢",
-    rating: 4.4,
-    reviews: 5600,
+    id: "virgin",
+    name: "Virgin Megastore",
+    logo: "🎵",
+    rating: 4.5,
+    reviews: 8600,
     verified: true,
     freeShipping: true,
-    deliveryDays: "3-5",
+    deliveryDays: "2-5",
     priceMultiplier: 1.05,
     badge: null,
   },
@@ -105,11 +106,11 @@ export default function BestPriceToday({ phone, selectedVariant }) {
   return (
     <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#6C2BD9] to-[#5521B0] px-4 md:px-6 py-4">
+      <div className="bg-gradient-to-r from-[#00843D] to-[#006B31] px-4 md:px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Zap className="h-4 w-4 text-[#F9B434]" />
+              <Zap className="h-4 w-4 text-[#EF3340]" />
               <span className="text-xs font-semibold text-white/80 uppercase tracking-wide">
                 Best Price Today
               </span>
@@ -180,7 +181,7 @@ export default function BestPriceToday({ phone, selectedVariant }) {
                     <Truck className="h-3 w-3" />
                     {retailer.freeShipping
                       ? "Free"
-                      : `₱${retailer.shippingFee}`}
+                      : `AED ${retailer.shippingFee}`}
                   </span>
                   <span className="flex items-center gap-1">
                     <Clock className="h-3 w-3" />
@@ -226,7 +227,7 @@ export default function BestPriceToday({ phone, selectedVariant }) {
       {retailerPrices.length > 3 && (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="w-full py-3 flex items-center justify-center gap-2 text-sm font-medium text-[#6C2BD9] hover:bg-[#6C2BD9]/5 transition-colors border-t border-slate-100"
+          className="w-full py-3 flex items-center justify-center gap-2 text-sm font-medium text-[#00843D] hover:bg-[#00843D]/5 transition-colors border-t border-slate-100"
         >
           {showAll ? (
             <>

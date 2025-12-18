@@ -15,7 +15,7 @@ const colorMap = {
   white: { name: "White", hex: "#FFFFFF" },
   blue: { name: "Blue", hex: "#3B82F6" },
   green: { name: "Green", hex: "#22C55E" },
-  purple: { name: "Purple", hex: "#8B5CF6" },
+  purple: { name: "Purple", hex: "#00A550" },
   yellow: { name: "Yellow", hex: "#EAB308" },
   pink: { name: "Pink", hex: "#EC4899" },
   red: { name: "Red", hex: "#EF4444" },
@@ -101,7 +101,7 @@ export default function VariantSelector({
                   onClick={() => handleStorageChange(storage)}
                   className={`relative px-4 py-2.5 rounded-xl border-2 transition-all duration-200 ${
                     isSelected
-                      ? "border-[#6C2BD9] bg-[#6C2BD9]/5 text-[#6C2BD9]"
+                      ? "border-[#00843D] bg-[#00843D]/5 text-[#00843D]"
                       : "border-slate-200 hover:border-slate-300 text-slate-700"
                   }`}
                 >
@@ -109,7 +109,7 @@ export default function VariantSelector({
                   {priceDiff > 0 && (
                     <span
                       className={`block text-xs mt-0.5 ${
-                        isSelected ? "text-[#6C2BD9]/70" : "text-slate-400"
+                        isSelected ? "text-[#00843D]/70" : "text-slate-400"
                       }`}
                     >
                       +{formatCurrency(priceDiff)}
@@ -118,14 +118,14 @@ export default function VariantSelector({
                   {priceDiff < 0 && (
                     <span
                       className={`block text-xs mt-0.5 ${
-                        isSelected ? "text-[#4CB9A8]" : "text-[#4CB9A8]"
+                        isSelected ? "text-[#008B8B]" : "text-[#008B8B]"
                       }`}
                     >
                       {formatCurrency(priceDiff)}
                     </span>
                   )}
                   {isSelected && (
-                    <div className="absolute -top-1 -right-1 h-4 w-4 bg-[#6C2BD9] rounded-full flex items-center justify-center">
+                    <div className="absolute -top-1 -right-1 h-4 w-4 bg-[#00843D] rounded-full flex items-center justify-center">
                       <Check className="h-2.5 w-2.5 text-white" />
                     </div>
                   )}
@@ -166,7 +166,7 @@ export default function VariantSelector({
                   <div
                     className={`h-10 w-10 rounded-full border-2 transition-all duration-200 ${
                       isSelected
-                        ? "border-[#6C2BD9] ring-2 ring-[#6C2BD9]/30"
+                        ? "border-[#00843D] ring-2 ring-[#00843D]/30"
                         : "border-slate-200 hover:border-slate-400"
                     }`}
                     style={{ backgroundColor: colorData.hex }}
@@ -205,7 +205,7 @@ export default function VariantSelector({
             <span className="text-sm text-slate-600">
               Selected variant price
             </span>
-            <span className="text-lg font-bold text-[#6C2BD9]">
+            <span className="text-lg font-bold text-[#00843D]">
               {formatCurrency(selectedVariant.price)}
             </span>
           </div>

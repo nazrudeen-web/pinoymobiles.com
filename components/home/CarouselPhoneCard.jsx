@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Star, Shield, BadgeCheck } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
-import { PinoyScoreBadge } from "@/components/ui/PinoyScore";
+import { UAEScoreBadge } from "@/components/ui/UAEScore";
 
 export default function CarouselPhoneCard({
   phone,
@@ -15,7 +15,7 @@ export default function CarouselPhoneCard({
   subtitle,
   showTrustedBadge = false,
   showSulitBadge = false,
-  showPinoyScore = true,
+  showUAEScore = true,
 }) {
   return (
     <Link
@@ -25,7 +25,7 @@ export default function CarouselPhoneCard({
       <div
         className={`relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg ${
           hoverColor.split(" ")[0]
-        } transition-all duration-300 pinoy-card-hover jeepney-shine`}
+        } transition-all duration-300 uae-card-hover uae-shine`}
       >
         {/* Badge */}
         {badge && (
@@ -38,22 +38,22 @@ export default function CarouselPhoneCard({
           </div>
         )}
 
-        {/* Trusted PH Seller Badge */}
+        {/* Trusted UAE Seller Badge */}
         {showTrustedBadge && (
           <div className="absolute top-2 left-2 z-10">
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-[#4CB9A8] px-1.5 py-0.5 text-[8px] font-bold text-white">
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-[#10B981] px-1.5 py-0.5 text-[8px] font-bold text-white">
               <Shield className="w-2.5 h-2.5" />
-              Verified PH
+              Verified UAE
             </span>
           </div>
         )}
 
-        {/* Sulit Badge */}
+        {/* Best Deal Badge */}
         {showSulitBadge && (
           <div className="absolute top-2 left-2 z-10">
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-linear-to-r from-[#F9B434] to-[#E5A020] px-1.5 py-0.5 text-[8px] font-bold text-[#1F2A44]">
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-linear-to-r from-[#EF3340] to-[#C41E2A] px-1.5 py-0.5 text-[8px] font-bold text-[#1A1A1A]">
               <BadgeCheck className="w-2.5 h-2.5" />
-              Sulit!
+              Best Deal!
             </span>
           </div>
         )}
@@ -77,8 +77,8 @@ export default function CarouselPhoneCard({
             <span className="text-[10px] font-semibold text-slate-500 uppercase">
               {phone.brand}
             </span>
-            {/* Pinoy Score Badge */}
-            {showPinoyScore && <PinoyScoreBadge score={phone.rating} />}
+            {/* UAE Score Badge */}
+            {showUAEScore && <UAEScoreBadge score={phone.rating} />}
           </div>
 
           <h3
