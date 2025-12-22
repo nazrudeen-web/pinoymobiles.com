@@ -1,18 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 
 export default function SimilarCarousel({ currentPhone, allPhones }) {
+  const currentPrice = Number(currentPhone.price || 0);
+  const base = allPhones.filter((p) => p.slug !== currentPhone.slug);
+  const byCategory = base.filter(
+    (p) => p.category && p.category === currentPhone.category
+  );
+  const inRange = byCategory.filter(
+    (p) => typeof p.price === "number" && Math.abs(p.price - currentPrice) <= 300
+  );
+  const pool = (inRange.length >= 6 ? inRange : byCategory.length >= 6 ? byCategory : base)
+    .slice()
+    .sort(
+      (a, b) =>
+        Math.abs((a.price || 0) - currentPrice) -
+        Math.abs((b.price || 0) - currentPrice)
+    )
+    .slice(0, 10);
+
   return (
     <section className="scroll-mt-32 md:scroll-mt-36">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-            💙 You Might Like
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Alternatives
           </p>
-          <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-slate-900">
-            Similar Phones
+          <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
+            Alternatives you should consider
           </h2>
         </div>
         <div className="flex items-center gap-2">
@@ -26,10 +43,10 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
                   behavior: "smooth",
                 });
             }}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-border bg-card hover:bg-muted/40 flex items-center justify-center transition-colors"
             aria-label="Scroll left"
           >
-            <ChevronLeft className="h-4 w-4 text-slate-600" />
+            <ChevronLeft className="h-4 w-4 text-muted-foreground" />
           </button>
           <button
             type="button"
@@ -41,14 +58,14 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
                   behavior: "smooth",
                 });
             }}
-            className="h-8 w-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center transition-colors"
+            className="h-8 w-8 rounded-full border border-border bg-card hover:bg-muted/40 flex items-center justify-center transition-colors"
             aria-label="Scroll right"
           >
-            <ChevronRight className="h-4 w-4 text-slate-600" />
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
           </button>
           <Link
             href="/phones"
-            className="text-sm font-medium text-primary hover:opacity-80 hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground hidden md:flex items-center gap-1 ml-2"
           >
             View All
             <ArrowRight className="h-4 w-4" />
@@ -60,44 +77,18 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
           id="similar-carousel"
           className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth"
         >
-          {allPhones
-            .filter((p) => p.slug !== currentPhone.slug)
-            .slice(0, 10)
-            .map((similarPhone, index) => {
-              const gradientColors = [
-                "from-sky-50 to-cyan-50",
-                "from-blue-50 to-cyan-50",
-                "from-orange-50 to-red-50",
-                "from-violet-50 to-purple-50",
-                "from-pink-50 to-rose-50",
-              ][index % 5];
-              const hoverColors = [
-                "hover:border-sky-300 group-hover:text-sky-600",
-                "hover:border-blue-300 group-hover:text-blue-600",
-                "hover:border-orange-300 group-hover:text-orange-600",
-                "hover:border-violet-300 group-hover:text-primary",
-                "hover:border-pink-300 group-hover:text-pink-600",
-              ][index % 5];
-              const priceColors = [
-                "text-sky-600",
-                "text-blue-600",
-                "text-orange-600",
-                "text-primary",
-                "text-pink-600",
-              ][index % 5];
-              return (
+          {pool.map((similarPhone, index) => {
+            return (
                 <Link
                   key={similarPhone.slug}
                   href={`/phones/${similarPhone.slug}`}
                   className="shrink-0 w-[calc(50%-8px)] md:w-[calc(20%-13px)] group snap-start"
                 >
                   <div
-                    className={`relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg ${
-                      hoverColors.split(" ")[0]
-                    } transition-all duration-300`}
+                    className="relative bg-card rounded-2xl border border-border p-4 hover:shadow-lg transition-all duration-300"
                   >
                     <div
-                      className={`relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br ${gradientColors} rounded-xl mb-3 overflow-hidden`}
+                      className="relative h-40 md:h-48 flex items-center justify-center bg-muted/30 rounded-xl mb-3 overflow-hidden"
                     >
                       <Image
                         src={`/mobile${(index % 5) + 1}.jpg`}
@@ -109,33 +100,25 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-semibold text-slate-500 uppercase">
+                        <span className="text-[10px] font-semibold text-muted-foreground uppercase">
                           {similarPhone.brand}
                         </span>
-                        <div className="flex items-center gap-0.5">
-                          <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                          <span className="text-[10px] font-semibold text-slate-700">
-                            {similarPhone.rating}
-                          </span>
-                        </div>
                       </div>
                       <h3
-                        className={`text-sm font-semibold text-slate-900 line-clamp-2 ${
-                          hoverColors.split(" ")[1] || ""
-                        } transition-colors min-h-10`}
+                        className="text-sm font-semibold text-foreground line-clamp-2 transition-colors min-h-10 group-hover:text-primary"
                       >
                         {similarPhone.name}
                       </h3>
-                      <div className="pt-2 border-t border-slate-100">
-                        <p className={`text-lg font-bold ${priceColors}`}>
+                      <div className="pt-2 border-t border-border">
+                        <p className="text-lg font-bold text-foreground">
                           {formatCurrency(similarPhone.price)}
                         </p>
                       </div>
                     </div>
                   </div>
                 </Link>
-              );
-            })}
+            );
+          })}
         </div>
       </div>
     </section>

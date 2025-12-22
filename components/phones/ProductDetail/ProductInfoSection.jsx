@@ -1,23 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  TrendingDown,
-  ChevronDown,
-  ThumbsUp,
-} from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 import VariantSelector from "./VariantSelector";
-
-// Calculate UAE Score
-function calculateUAEScore(phone) {
-  let score = phone.rating || 4.0;
-
-  // Adjust based on category
-  if (phone.category === "Flagship") score += 0.3;
-  else if (phone.category === "Gaming") score += 0.2;
-
-  // Cap at 9.9
-  return Math.min(score, 9.9).toFixed(1);
-}
 
 export function ProductInfoSection({
   phone,
@@ -43,39 +26,36 @@ export function ProductInfoSection({
     ? Math.round(selectedVariant.price * 1.05)
     : highestPrice;
 
-  const uaeScore = calculateUAEScore(phone);
-  const isRecommended = parseFloat(uaeScore) >= 4.5;
-
   return (
-    <div className="md:col-span-7 h-full lg:min-h-[620px] flex flex-col">
+    <div className="h-full flex flex-col">
       <div>
-        {/* Phone Name */}
-        <h1 className="text-xl md:text-2xl font-bold text-foreground mb-2 leading-tight">
+        <h1 className="text-lg md:text-xl font-bold text-foreground leading-tight">
           {phone.name}
         </h1>
-        {/* Short Subtitle */}
-        <p className="text-sm text-muted-foreground mb-3">
-          {selectedVariant?.storage || phone.specs?.storage || "256GB"} •{" "}
-          {phone.specs?.ram || "8GB RAM"} •{" "}
-          {phone.specs?.display?.split(",")[0] || '6.7" Display'}
+
+        <p className="mt-2 text-sm text-muted-foreground">
+          {phone.specs?.ram || "8GB RAM"} |{" "}
+          {selectedVariant?.storage || phone.specs?.storage || "256GB"}
         </p>
 
-        {/* Worth Buying (small) */}
-        {isRecommended && (
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-accent/10 border border-accent/20 mb-4">
-            <ThumbsUp className="h-4 w-4 text-accent" />
-            <span className="text-sm font-semibold text-accent">
-              Worth Buying
-            </span>
-            <span className="text-xs text-accent/80">
-              {phone.price < 20000 ? "Great value" : "Great flagship"}
-            </span>
+        {/* Price (dominant) */}
+        <div className="mt-4">
+          <div className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
+            {formatCurrency(variantLowestPrice)}
           </div>
-        )}
+          <div className="mt-1 text-sm text-muted-foreground">
+            from {retailersCount} stores
+            {variantHighestPrice > variantLowestPrice ? (
+              <>
+                {" "}• up to {formatCurrency(variantHighestPrice - variantLowestPrice)} difference
+              </>
+            ) : null}
+          </div>
+        </div>
 
         {/* Storage + Color */}
         {phone.variants && phone.variants.length > 0 && (
-          <div className="bg-card border border-border rounded-xl p-4">
+          <div className="mt-4 bg-card border border-border rounded-xl p-4">
             <VariantSelector
               variants={phone.variants}
               selectedVariant={selectedVariant}
@@ -86,38 +66,11 @@ export function ProductInfoSection({
         )}
       </div>
 
-      {/* Bottom-aligned price + CTA (fills height to match left) */}
-      <div className="mt-auto pt-4 space-y-4">
-        {/* Best Price Today */}
-        <div className="bg-card border border-border rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Best Price Today
-            </span>
-            <span className="text-xs text-accent font-medium flex items-center gap-1">
-              <TrendingDown className="h-3 w-3" />
-              Save up to {formatCurrency(variantHighestPrice - variantLowestPrice)}
-            </span>
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl md:text-3xl font-bold text-primary">
-              {formatCurrency(variantLowestPrice)}
-            </span>
-            <span className="text-sm text-muted-foreground">to</span>
-            <span className="text-lg font-semibold text-muted-foreground">
-              {formatCurrency(variantHighestPrice)}
-            </span>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            From {retailersCount} stores • Prices updated today
-          </p>
-        </div>
-
-        {/* Main CTA */}
+      {/* CTA */}
+      <div className="mt-4 md:mt-auto pt-4">
         <div className="hidden md:block">
-          <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3.5 px-6 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg">
-            Compare {retailersCount} Prices
-            <ChevronDown className="h-5 w-5" />
+          <button type="button" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3.5 px-6 rounded-xl font-bold text-base transition-colors flex items-center justify-center">
+            Compare Prices
           </button>
         </div>
       </div>

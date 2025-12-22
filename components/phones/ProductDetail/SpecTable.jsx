@@ -66,7 +66,7 @@ export default function SpecTable({ specs }) {
 
   // Default values for specs that may not exist
   const getSpecValue = (key) => {
-    if (specs && specs[key]) return specs[key];
+    if (specs?.[key]) return specs[key];
 
     // Fallback defaults based on key
     const defaults = {
@@ -100,8 +100,8 @@ export default function SpecTable({ specs }) {
 
   return (
     <div className="space-y-6">
-      {specCategories.map((category, catIndex) => (
-        <div key={catIndex}>
+      {specCategories.map((category) => (
+        <div key={category.title}>
           {/* Category Header */}
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg">{category.icon}</span>
@@ -114,11 +114,11 @@ export default function SpecTable({ specs }) {
           <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
             <table className="w-full">
               <tbody className="divide-y divide-slate-100">
-                {category.specs.map((spec, specIndex) => (
+                {category.specs.map((spec) => (
                   <tr
-                    key={specIndex}
+                    key={spec.key}
                     className={
-                      specIndex % 2 === 0 ? "bg-white" : "bg-slate-50/50"
+                      category.title.length % 2 === 0 ? "bg-white" : "bg-slate-50/50"
                     }
                   >
                     <td className="px-4 py-3 text-xs md:text-sm text-slate-500 font-medium w-1/3 md:w-2/5">

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header/Header";
 import { phones } from "@/lib/data/phones";
 import { formatCurrency } from "@/lib/format";
+import { useSearchParams } from "next/navigation";
 import { X, Search, Star, ChevronUp, ChevronDown, Plus } from "lucide-react";
 
 // Spec categories organized like PriceRunner
@@ -53,11 +54,38 @@ const specCategories = [
   },
 ];
 
-export default function ComparePage() {
-  const [selectedPhones, setSelectedPhones] = useState([phones[0], phones[1]]);
+function ComparePageInner() {
+  const searchParams = useSearchParams();
+
+  const initialSelectedPhones = useMemo(() => {
+    const raw = searchParams.get("phones");
+    if (!raw) return [phones[0], phones[1]];
+    const slugs = raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    const picked = slugs
+      .map((slug) => phones.find((p) => p.slug === slug))
+      .filter(Boolean)
+      .slice(0, 4);
+
+    if (picked.length === 0) return [phones[0], phones[1]];
+    if (picked.length === 1) {
+      const fallback = phones.find((p) => p.slug !== picked[0].slug) || phones[1];
+      return [picked[0], fallback];
+    }
+    return picked;
+  }, [searchParams]);
+
+  const [selectedPhones, setSelectedPhones] = useState(initialSelectedPhones);
   const [searchQuery, setSearchQuery] = useState("");
   const [showOnlyDifferences, setShowOnlyDifferences] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState({});
+
+  useEffect(() => {
+    setSelectedPhones(initialSelectedPhones);
+  }, [initialSelectedPhones]);
 
   // Filter phones for search
   const searchResults = useMemo(() => {
@@ -160,6 +188,7 @@ export default function ComparePage() {
                         className="flex-1 min-w-0 relative group"
                       >
                         <button
+                          type="button"
                           onClick={() => removePhone(phone.slug)}
                           className="absolute -top-1 -right-1 z-10 w-6 h-6 bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                         >
@@ -223,6 +252,7 @@ export default function ComparePage() {
                       <div key={category.name}>
                         {/* Category Header */}
                         <button
+                          type="button"
                           onClick={() => toggleCategory(category.name)}
                           className="w-full flex items-center justify-between px-4 py-3 bg-muted hover:bg-muted/80 transition-colors"
                         >
@@ -295,6 +325,7 @@ export default function ComparePage() {
                   {(searchQuery ? searchResults : suggestedPhones).map(
                     (phone) => (
                       <button
+                        type="button"
                         key={phone.slug}
                         onClick={() => addPhone(phone)}
                         disabled={selectedPhones.length >= 4}
@@ -340,5 +371,13 @@ export default function ComparePage() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense>
+      <ComparePageInner />
+    </Suspense>
   );
 }

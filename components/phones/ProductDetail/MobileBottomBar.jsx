@@ -16,10 +16,11 @@ export default function MobileBottomBar({ lowestPrice, retailersCount }) {
             {formatCurrency(lowestPrice)}
           </p>
         </div>
-        <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl font-bold text-sm transition-all">
+        <button type="button" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl font-bold text-sm transition-all">
           Compare Prices
         </button>
         <button
+          type="button"
           onClick={() => setIsFavorite(!isFavorite)}
           className={`p-3 rounded-xl border-2 transition-all ${
             isFavorite

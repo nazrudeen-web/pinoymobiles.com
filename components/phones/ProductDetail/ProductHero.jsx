@@ -8,7 +8,6 @@ export default function ProductHero({
   highestPrice,
   retailersCount,
 }) {
-  const [isFavorite, setIsFavorite] = useState(false);
   const [selectedImage, setSelectedImage] = useState(1);
 
   return (
@@ -18,11 +17,9 @@ export default function ProductHero({
       <div className="bg-background">
         <div className="mx-auto max-w-7xl">
           <div className="px-4 md:px-6 py-4 md:py-8">
-            <div className="grid md:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+            <div className="grid gap-6 lg:gap-10 items-stretch md:[grid-template-columns:0.38fr_0.62fr]">
               <ProductImageSection
                 phone={phone}
-                isFavorite={isFavorite}
-                setIsFavorite={setIsFavorite}
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
               />

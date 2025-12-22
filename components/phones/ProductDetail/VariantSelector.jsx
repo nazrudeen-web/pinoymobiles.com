@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import { Check } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 
@@ -80,9 +78,7 @@ export default function VariantSelector({
       {storageOptions.length > 0 && (
         <div>
           <div className="flex items-center justify-between mb-3">
-            <label className="text-sm font-semibold text-slate-700">
-              Storage
-            </label>
+            <p className="text-sm font-semibold text-slate-700">Storage</p>
             <span className="text-xs text-slate-500">{currentStorage}</span>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -97,6 +93,7 @@ export default function VariantSelector({
 
               return (
                 <button
+                  type="button"
                   key={storage}
                   onClick={() => handleStorageChange(storage)}
                   className={`relative px-4 py-2.5 rounded-xl border-2 transition-all duration-200 ${
@@ -140,9 +137,7 @@ export default function VariantSelector({
       {colorOptions.length > 0 && (
         <div>
           <div className="flex items-center justify-between mb-3">
-            <label className="text-sm font-semibold text-slate-700">
-              Color
-            </label>
+            <p className="text-sm font-semibold text-slate-700">Color</p>
             <span className="text-xs text-slate-500">
               {colorMap[currentColor]?.name || currentColor}
             </span>
@@ -155,6 +150,7 @@ export default function VariantSelector({
 
               return (
                 <button
+                  type="button"
                   key={color}
                   onClick={() => isAvailable && handleColorChange(color)}
                   disabled={!isAvailable}
