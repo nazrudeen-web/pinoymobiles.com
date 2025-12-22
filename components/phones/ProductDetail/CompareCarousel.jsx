@@ -75,21 +75,21 @@ export default function CompareCarousel({
               const gradientColors = [
                 "from-violet-50 to-purple-50",
                 "from-blue-50 to-cyan-50",
-                "from-emerald-50 to-teal-50",
+                "from-sky-50 to-cyan-50",
                 "from-orange-50 to-red-50",
                 "from-pink-50 to-rose-50",
               ][index % 5];
               const hoverColors = [
                 "hover:border-violet-300 group-hover:text-primary",
                 "hover:border-blue-300 group-hover:text-blue-600",
-                "hover:border-emerald-300 group-hover:text-emerald-600",
+                "hover:border-sky-300 group-hover:text-sky-600",
                 "hover:border-orange-300 group-hover:text-orange-600",
                 "hover:border-pink-300 group-hover:text-pink-600",
               ][index % 5];
               const priceColors = [
                 "text-primary",
                 "text-blue-600",
-                "text-emerald-600",
+                "text-sky-600",
                 "text-orange-600",
                 "text-pink-600",
               ][index % 5];

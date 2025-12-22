@@ -9,7 +9,7 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-            💚 You Might Like
+            💙 You Might Like
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-slate-900">
             Similar Phones
@@ -48,7 +48,7 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
           </button>
           <Link
             href="/phones"
-            className="text-sm font-medium text-emerald-600 hover:opacity-80 hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-primary hover:opacity-80 hidden md:flex items-center gap-1 ml-2"
           >
             View All
             <ArrowRight className="h-4 w-4" />
@@ -65,21 +65,21 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
             .slice(0, 10)
             .map((similarPhone, index) => {
               const gradientColors = [
-                "from-emerald-50 to-teal-50",
+                "from-sky-50 to-cyan-50",
                 "from-blue-50 to-cyan-50",
                 "from-orange-50 to-red-50",
                 "from-violet-50 to-purple-50",
                 "from-pink-50 to-rose-50",
               ][index % 5];
               const hoverColors = [
-                "hover:border-emerald-300 group-hover:text-emerald-600",
+                "hover:border-sky-300 group-hover:text-sky-600",
                 "hover:border-blue-300 group-hover:text-blue-600",
                 "hover:border-orange-300 group-hover:text-orange-600",
                 "hover:border-violet-300 group-hover:text-primary",
                 "hover:border-pink-300 group-hover:text-pink-600",
               ][index % 5];
               const priceColors = [
-                "text-emerald-600",
+                "text-sky-600",
                 "text-blue-600",
                 "text-orange-600",
                 "text-primary",

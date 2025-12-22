@@ -15,10 +15,10 @@ export default function ProductHero({
     <>
       <ProductBreadcrumb phone={phone} />
 
-      <div className="bg-white">
+      <div className="bg-background">
         <div className="mx-auto max-w-7xl">
           <div className="px-4 md:px-6 py-4 md:py-8">
-            <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
+            <div className="grid md:grid-cols-12 gap-6 lg:gap-10 items-stretch">
               <ProductImageSection
                 phone={phone}
                 isFavorite={isFavorite}

@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About Us | PinoyMobiles",
+  title: "About Us | UAEMobileGuide",
   description:
-    "Learn about PinoyMobiles - the Philippines' trusted mobile phone comparison platform.",
+    "Learn about UAEMobileGuide - a trusted mobile phone comparison platform for the UAE.",
 };
 
 const stats = [
@@ -42,7 +42,7 @@ const values = [
     icon: Heart,
     title: "User-First Approach",
     description:
-      "Every feature we build is designed with Filipino consumers in mind, making comparisons easy.",
+      "Every feature we build is designed with UAE shoppers in mind, making comparisons easy.",
   },
   {
     icon: Award,
@@ -62,13 +62,12 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                Helping Filipinos Find the Perfect Phone
+                Helping UAE Shoppers Find the Perfect Phone
               </h1>
               <p className="mt-6 text-lg text-white/90 leading-relaxed">
-                PinoyMobiles is the Philippines' leading mobile phone comparison
-                platform. We help millions of Filipinos compare prices, specs,
-                and reviews to find the best deals from trusted sellers
-                nationwide.
+                UAEMobileGuide is a mobile phone comparison platform for the
+                UAE. Compare prices, specs, and reviews to find the best deals
+                from trusted sellers.
               </p>
             </div>
           </div>
@@ -105,15 +104,15 @@ export default function AboutPage() {
                   Making Phone Shopping Simple
                 </h2>
                 <p className="mt-4 text-foreground leading-relaxed">
-                  We believe every Filipino deserves access to transparent
-                  pricing and honest reviews. Our mission is to eliminate the
-                  confusion from phone shopping by providing a single platform
-                  where you can compare everything that matters.
+                  We believe everyone deserves access to transparent pricing and
+                  honest reviews. Our mission is to eliminate the confusion from
+                  phone shopping by providing a single platform where you can
+                  compare everything that matters.
                 </p>
                 <p className="mt-4 text-foreground leading-relaxed">
                   From budget-friendly options to flagship devices, we cover
-                  every phone available in the Philippine market with accurate,
-                  up-to-date information.
+                  phones available in the UAE market with accurate, up-to-date
+                  information.
                 </p>
               </div>
               <div className="bg-card rounded-2xl p-8 border border-border">
@@ -144,7 +143,7 @@ export default function AboutPage() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground">Our Values</h2>
               <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-                These core values guide everything we do at PinoyMobiles
+                These core values guide everything we do at UAEMobileGuide
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -184,21 +183,21 @@ export default function AboutPage() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-violet-400" />
-                      <span>hello@pinoymobiles.com</span>
+                      <span>hello@uaemobileguide.com</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Phone className="w-5 h-5 text-violet-400" />
-                      <span>+63 2 8888 9999</span>
+                      <span>+971 50 123 4567</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <MapPin className="w-5 h-5 text-violet-400" />
-                      <span>Makati City, Philippines</span>
+                      <span>Dubai, United Arab Emirates</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
-                    href="mailto:hello@pinoymobiles.com"
+                    href="mailto:hello@uaemobileguide.com"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl transition-colors shadow-lg"
                   >
                     <Mail className="w-5 h-5" />

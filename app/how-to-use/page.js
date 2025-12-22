@@ -5,9 +5,9 @@ import { HowToStep } from "@/components/how-to-use/HowToStep";
 import { FeatureGrid } from "@/components/how-to-use/FeatureGrid";
 
 export const metadata = {
-  title: "How to Use | PinoyMobiles",
+  title: "How to Use | UAEMobileGuide",
   description:
-    "Learn how to use PinoyMobiles to find and compare the best phone deals in the Philippines.",
+    "Learn how to use UAEMobileGuide to find and compare the best phone deals in the UAE.",
 };
 
 export default function HowToUsePage() {
@@ -25,7 +25,7 @@ export default function HowToUsePage() {
               <span className="text-foreground">How to Use</span>
             </nav>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              How to Use PinoyMobiles
+              How to Use UAEMobileGuide
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
               Your complete guide to finding, comparing, and buying the perfect

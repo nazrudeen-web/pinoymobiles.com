@@ -20,20 +20,18 @@ const retailers = [
     name: "Sharaf DG",
     logo: "🏪",
     rating: 4.8,
-    reviews: 18500,
     verified: true,
     freeShipping: true,
     deliveryDays: "1-3",
     priceMultiplier: 0.95,
     badge: "Best Price",
-    badgeColor: "bg-emerald-500",
+    badgeColor: "bg-accent",
   },
   {
     id: "amazon-ae",
     name: "Amazon.ae",
     logo: "📦",
     rating: 4.9,
-    reviews: 85000,
     verified: true,
     freeShipping: true,
     shippingFee: 0,
@@ -47,20 +45,18 @@ const retailers = [
     name: "Noon",
     logo: "🛒",
     rating: 4.7,
-    reviews: 42000,
     verified: true,
     freeShipping: true,
     deliveryDays: "1-3",
     priceMultiplier: 1.0,
     badge: "Express",
-    badgeColor: "bg-[#00843D]",
+    badgeColor: "bg-primary",
   },
   {
     id: "jumbo",
     name: "Jumbo Electronics",
     logo: "🏬",
     rating: 4.6,
-    reviews: 12200,
     verified: true,
     freeShipping: false,
     shippingFee: 15,
@@ -74,7 +70,6 @@ const retailers = [
     name: "Virgin Megastore",
     logo: "🎵",
     rating: 4.5,
-    reviews: 8600,
     verified: true,
     freeShipping: true,
     deliveryDays: "2-5",
@@ -104,13 +99,13 @@ export default function BestPriceToday({ phone, selectedVariant }) {
     : retailerPrices.slice(0, 3);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+    <div className="bg-card rounded-2xl border border-border overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#00843D] to-[#006B31] px-4 md:px-6 py-4">
+      <div className="bg-gradient-to-r from-primary to-primary/80 px-4 md:px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Zap className="h-4 w-4 text-[#EF3340]" />
+              <Zap className="h-4 w-4 text-white/90" />
               <span className="text-xs font-semibold text-white/80 uppercase tracking-wide">
                 Best Price Today
               </span>
@@ -125,7 +120,7 @@ export default function BestPriceToday({ phone, selectedVariant }) {
             </div>
           </div>
           <div className="text-right">
-            <div className="flex items-center gap-1 text-emerald-300">
+            <div className="flex items-center gap-1 text-primary-foreground/80">
               <TrendingDown className="h-4 w-4" />
               <span className="text-sm font-semibold">
                 Save {formatCurrency(Math.round(lowestPrice * 0.15))}
@@ -145,12 +140,12 @@ export default function BestPriceToday({ phone, selectedVariant }) {
       </div>
 
       {/* Retailer List */}
-      <div className="divide-y divide-slate-100">
+      <div className="divide-y divide-border">
         {displayedRetailers.map((retailer, index) => (
           <div
             key={retailer.id}
-            className={`p-4 md:px-6 hover:bg-slate-50 transition-colors ${
-              index === 0 ? "bg-emerald-50/50" : ""
+            className={`p-4 md:px-6 hover:bg-muted/40 transition-colors ${
+              index === 0 ? "bg-accent/10" : ""
             }`}
           >
             <div className="flex items-center gap-4">
@@ -158,12 +153,9 @@ export default function BestPriceToday({ phone, selectedVariant }) {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xl">{retailer.logo}</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="font-semibold text-foreground">
                     {retailer.name}
                   </span>
-                  {retailer.verified && (
-                    <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                  )}
                   {retailer.badge && (
                     <span
                       className={`text-[10px] font-bold text-white px-1.5 py-0.5 rounded ${retailer.badgeColor}`}
@@ -172,10 +164,10 @@ export default function BestPriceToday({ phone, selectedVariant }) {
                     </span>
                   )}
                 </div>
-                <div className="flex items-center gap-3 text-xs text-slate-500">
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                    {retailer.rating} ({(retailer.reviews / 1000).toFixed(1)}k)
+                    {retailer.rating}
                   </span>
                   <span className="flex items-center gap-1">
                     <Truck className="h-3 w-3" />
@@ -195,13 +187,13 @@ export default function BestPriceToday({ phone, selectedVariant }) {
                 <div className="flex items-baseline gap-1.5 justify-end mb-1">
                   <span
                     className={`text-lg font-bold ${
-                      index === 0 ? "text-emerald-600" : "text-slate-900"
+                      index === 0 ? "text-primary" : "text-foreground"
                     }`}
                   >
                     {formatCurrency(retailer.price)}
                   </span>
                   {retailer.originalPrice > retailer.price && (
-                    <span className="text-xs text-slate-400 line-through">
+                    <span className="text-xs text-muted-foreground line-through">
                       {formatCurrency(retailer.originalPrice)}
                     </span>
                   )}
@@ -210,8 +202,8 @@ export default function BestPriceToday({ phone, selectedVariant }) {
                   href="#"
                   className={`inline-flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                     index === 0
-                      ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                      : "bg-muted/60 hover:bg-muted text-foreground"
                   }`}
                 >
                   Go to Store
@@ -227,7 +219,7 @@ export default function BestPriceToday({ phone, selectedVariant }) {
       {retailerPrices.length > 3 && (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="w-full py-3 flex items-center justify-center gap-2 text-sm font-medium text-[#00843D] hover:bg-[#00843D]/5 transition-colors border-t border-slate-100"
+          className="w-full py-3 flex items-center justify-center gap-2 text-sm font-medium text-primary hover:bg-primary/5 transition-colors border-t border-border"
         >
           {showAll ? (
             <>
@@ -243,8 +235,8 @@ export default function BestPriceToday({ phone, selectedVariant }) {
       )}
 
       {/* Disclaimer */}
-      <div className="px-4 md:px-6 py-3 bg-slate-50 border-t border-slate-100">
-        <p className="text-[10px] text-slate-400 text-center">
+      <div className="px-4 md:px-6 py-3 bg-muted/40 border-t border-border">
+        <p className="text-[10px] text-muted-foreground text-center">
           💡 Prices may vary. We earn a commission when you buy through our
           links at no extra cost to you.
         </p>

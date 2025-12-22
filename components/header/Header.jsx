@@ -20,17 +20,14 @@ export default function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-2.5 text-sm text-primary-foreground">
           <UAEFlag className="w-5 h-4" />
           <span className="font-medium">
-            Compare prices from{" "}
-            <span className="text-white font-bold">
-              6,300+ Verified UAE Sellers
-            </span>
+            Compare prices across UAE retailers
           </span>
           <span className="hidden lg:inline text-primary-foreground/70 mx-2">•</span>
           <Link
             href="/compare"
             className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-white hover:text-gray-200 underline-offset-2 transition-colors"
           >
-            Compare Now
+            Compare prices
             <ChevronDown className="h-3 w-3 -rotate-90" />
           </Link>
         </div>

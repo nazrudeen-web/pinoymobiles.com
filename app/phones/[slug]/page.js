@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Home, ChevronRight } from "lucide-react";
 import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
 import { phones } from "@/lib/data/phones";
 import ProductDetailPage from "@/components/phones/ProductDetail/ProductDetailPage";
 
@@ -21,7 +20,6 @@ export default async function PhoneDetailsPage({ params }) {
   return (
     <>
       <ProductDetailPage phone={phone} allPhones={phones} />
-      <Footer />
     </>
   );
 }

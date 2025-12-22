@@ -1,27 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Star, TrendingUp, Flame } from "lucide-react";
+import { Star, Flame, Heart } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
+import { useState } from "react";
 
 export default function TrendingPhoneCard({ phone, index = 0 }) {
+  const [liked, setLiked] = useState(false);
+
   return (
     <Link
       href={`/phones/${phone.slug}`}
       className="shrink-0 w-[calc(50%-8px)] md:w-[calc(20%-13px)] group snap-start"
     >
-      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-[#00843D]/30 transition-all duration-300 uae-card-hover uae-shine">
-        {/* Badge - only for #1 */}
-        {index === 0 && (
-          <div className="absolute top-2 right-2 z-10">
-            <span className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#00843D] to-[#EF3340] px-2 py-1 text-[10px] font-bold text-white shadow-md">
-              <Flame className="h-3 w-3" />
-              #1 Trending
-            </span>
-          </div>
-        )}
+      <div className="relative bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-lg hover:border-primary/30 transition-all duration-300 uae-card-hover uae-shine">
+        {/* Like */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setLiked((v) => !v);
+          }}
+          aria-label={liked ? "Remove from favorites" : "Add to favorites"}
+          className="absolute top-2 right-2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur border border-slate-200 text-slate-500 hover:text-primary transition-colors"
+        >
+          <Heart className={`h-4 w-4 ${liked ? "fill-current text-primary" : ""}`} />
+        </button>
 
         {/* Phone Image */}
-        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-[#00843D]/5 to-[#EF3340]/5 rounded-xl mb-3 overflow-hidden">
+        <div className="relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br from-primary/5 to-destructive/5 rounded-xl mb-3 overflow-hidden">
           <Image
             src={`/mobile${(index % 5) + 1}.jpg`}
             alt={phone.name}
@@ -45,15 +54,15 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
             </div>
           </div>
 
-          <h3 className="text-sm font-semibold text-slate-900 line-clamp-2 group-hover:text-[#00843D] transition-colors min-h-10">
+          <h3 className="text-sm font-semibold text-slate-900 line-clamp-2 group-hover:text-primary transition-colors min-h-10">
             {phone.name}
           </h3>
 
           <div className="pt-2 border-t border-slate-100">
-            <p className="text-lg font-bold text-[#00843D]">
+            <p className="text-lg font-bold text-primary">
               {formatCurrency(phone.price)}
             </p>
-            <p className="text-[10px] text-slate-500">Pinakamurang presyo</p>
+            <p className="text-[10px] text-slate-500">Best price today</p>
           </div>
         </div>
       </div>

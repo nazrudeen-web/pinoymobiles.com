@@ -60,9 +60,9 @@ export default function ComparisonPromo() {
           </button>
           <Link
             href="/compare"
-            className="text-sm font-medium text-[#00843D] hover:text-[#006B31] hidden md:flex items-center gap-1 ml-2"
+            className="text-sm font-medium text-primary hover:text-primary/80 hidden md:flex items-center gap-1 ml-2"
           >
-            I-Compare Lahat
+            View all comparisons
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -86,9 +86,9 @@ export default function ComparisonPromo() {
       {/* Mobile View All Link */}
       <Link
         href="/compare"
-        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-[#00843D] hover:text-[#006B31]"
+        className="mt-4 flex md:hidden items-center justify-center gap-1 text-sm font-medium text-primary hover:text-primary/80"
       >
-        Tingnan Lahat ng Comparisons
+        View all comparisons
         <ArrowRight className="h-4 w-4" />
       </Link>
     </section>

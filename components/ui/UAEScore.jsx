@@ -14,14 +14,39 @@ export default function UAEScore({
   // Determine score color based on value
   const getScoreColor = (score) => {
     if (score >= 8.5)
-      return { bg: "bg-[#008B8B]", text: "text-[#008B8B]", label: "Excellent" };
+      return {
+        bg: "bg-primary",
+        badgeText: "text-primary-foreground",
+        text: "text-primary",
+        label: "Excellent",
+      };
     if (score >= 7.5)
-      return { bg: "bg-[#00843D]", text: "text-[#00843D]", label: "Very Good" };
+      return {
+        bg: "bg-accent",
+        badgeText: "text-accent-foreground",
+        text: "text-accent",
+        label: "Very Good",
+      };
     if (score >= 6.5)
-      return { bg: "bg-[#EF3340]", text: "text-[#C41E2A]", label: "Good" };
+      return {
+        bg: "bg-secondary",
+        badgeText: "text-secondary-foreground",
+        text: "text-foreground",
+        label: "Good",
+      };
     if (score >= 5.0)
-      return { bg: "bg-orange-500", text: "text-orange-500", label: "Average" };
-    return { bg: "bg-slate-400", text: "text-slate-400", label: "Below Avg" };
+      return {
+        bg: "bg-warning",
+        badgeText: "text-warning-foreground",
+        text: "text-warning",
+        label: "Average",
+      };
+    return {
+      bg: "bg-muted",
+      badgeText: "text-muted-foreground",
+      text: "text-muted-foreground",
+      label: "Below average",
+    };
   };
 
   const scoreData = getScoreColor(score);
@@ -51,7 +76,7 @@ export default function UAEScore({
     <div className={`flex items-center ${sizeConfig.wrapper}`}>
       {/* Score Badge */}
       <div
-        className={`${sizeConfig.badge} ${scoreData.bg} rounded-lg flex items-center justify-center font-bold text-white shadow-sm`}
+        className={`${sizeConfig.badge} ${scoreData.bg} ${scoreData.badgeText} rounded-lg flex items-center justify-center font-bold shadow-sm`}
       >
         {score.toFixed(1)}
       </div>
@@ -76,11 +101,11 @@ export default function UAEScore({
  */
 export function UAEScoreBadge({ score }) {
   const getScoreColor = (score) => {
-    if (score >= 8.5) return "bg-[#008B8B] text-white";
-    if (score >= 7.5) return "bg-[#00843D] text-white";
-    if (score >= 6.5) return "bg-[#EF3340] text-[#1A1A1A]";
-    if (score >= 5.0) return "bg-orange-500 text-white";
-    return "bg-slate-400 text-white";
+    if (score >= 8.5) return "bg-primary text-primary-foreground";
+    if (score >= 7.5) return "bg-accent text-accent-foreground";
+    if (score >= 6.5) return "bg-secondary text-secondary-foreground";
+    if (score >= 5.0) return "bg-warning text-warning-foreground";
+    return "bg-muted text-muted-foreground";
   };
 
   return (

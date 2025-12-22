@@ -88,13 +88,13 @@ export default function QuickDecision({ phone }) {
           {suitableFor.map((uc) => (
             <div
               key={uc.id}
-              className="flex items-center gap-2 px-3 py-2 rounded-full bg-emerald-50 border border-emerald-200"
+              className="flex items-center gap-2 px-3 py-2 rounded-full bg-accent/10 border border-accent/20"
             >
-              <uc.icon className="h-4 w-4 text-emerald-600" />
-              <span className="text-sm font-medium text-emerald-700">
+              <uc.icon className="h-4 w-4 text-accent" />
+              <span className="text-sm font-medium text-accent">
                 {uc.label}
               </span>
-              <Check className="h-3.5 w-3.5 text-emerald-500" />
+              <Check className="h-3.5 w-3.5 text-accent" />
             </div>
           ))}
         </div>
@@ -132,7 +132,7 @@ export default function QuickDecision({ phone }) {
               key={i}
               className="flex items-start gap-2 text-sm text-slate-600"
             >
-              <Check className="h-4 w-4 text-[#00843D] mt-0.5 shrink-0" />
+              <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
               {highlight}
             </li>
           ))}

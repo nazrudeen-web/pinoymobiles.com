@@ -1,22 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Shield, BadgeCheck } from "lucide-react";
+import { Heart } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
-import { UAEScoreBadge } from "@/components/ui/UAEScore";
+import { useState } from "react";
 
 export default function CarouselPhoneCard({
   phone,
   index = 0,
-  badge,
-  badgeColors = "bg-orange-100 border-orange-300 text-orange-700",
   imageColors = "from-orange-50 to-red-50",
   hoverColor = "hover:border-orange-300 group-hover:text-orange-600",
   priceColor = "text-orange-600",
   subtitle,
-  showTrustedBadge = false,
-  showSulitBadge = false,
-  showUAEScore = true,
 }) {
+  const [liked, setLiked] = useState(false);
+
   return (
     <Link
       href={`/phones/${phone.slug}`}
@@ -26,36 +25,19 @@ export default function CarouselPhoneCard({
         className={`relative bg-card rounded-2xl border border-border p-4 hover:shadow-lg ${hoverColor.split(" ")[0]
           } transition-all duration-300 uae-card-hover uae-shine`}
       >
-        {/* Badge */}
-        {badge && (
-          <div className="absolute top-2 right-2 z-10">
-            <span
-              className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold ${badgeColors}`}
-            >
-              {badge}
-            </span>
-          </div>
-        )}
-
-        {/* Trusted UAE Seller Badge */}
-        {showTrustedBadge && (
-          <div className="absolute top-2 left-2 z-10">
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-[#10B981] px-1.5 py-0.5 text-[8px] font-bold text-white">
-              <Shield className="w-2.5 h-2.5" />
-              Verified UAE
-            </span>
-          </div>
-        )}
-
-        {/* Best Deal Badge */}
-        {showSulitBadge && (
-          <div className="absolute top-2 left-2 z-10">
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-linear-to-r from-[#EF3340] to-[#C41E2A] px-1.5 py-0.5 text-[8px] font-bold text-[#1A1A1A]">
-              <BadgeCheck className="w-2.5 h-2.5" />
-              Best Deal!
-            </span>
-          </div>
-        )}
+        {/* Like */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setLiked((v) => !v);
+          }}
+          aria-label={liked ? "Remove from favorites" : "Add to favorites"}
+          className="absolute top-2 right-2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/90 backdrop-blur border border-border text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Heart className={`h-4 w-4 ${liked ? "fill-current text-primary" : ""}`} />
+        </button>
 
         {/* Phone Image */}
         <div
@@ -76,8 +58,9 @@ export default function CarouselPhoneCard({
             <span className="text-[10px] font-semibold text-muted-foreground uppercase">
               {phone.brand}
             </span>
-            {/* UAE Score Badge */}
-            {showUAEScore && <UAEScoreBadge score={phone.rating} />}
+            <span className="text-[10px] font-semibold text-muted-foreground">
+              {phone.rating}
+            </span>
           </div>
 
           <h3
@@ -98,7 +81,7 @@ export default function CarouselPhoneCard({
                 )}
               </div>
               <span className="text-[9px] text-muted-foreground text-right">
-                from 5+ stores
+                compare store prices
               </span>
             </div>
           </div>

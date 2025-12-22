@@ -137,9 +137,7 @@ export default function SearchRightMobile() {
       {/* Value Proposition */}
       <div className="mt-6 md:mt-8 text-center">
         <p className="text-xs text-slate-400">
-          ✨ Helping UAE choose the right smartphone since 2024 •{" "}
-          <span className="text-[#008B8B] font-medium">6,300+ phones</span> •{" "}
-          <span className="text-[#00843D] font-medium">Trusted stores</span>
+          ✨ Find the right phone for your budget • Compare prices across stores
         </p>
       </div>
     </section>

@@ -6,15 +6,13 @@ const quickCategories = [
     name: "Best Value",
     icon: "💰",
     href: "/phones?category=budget",
-    color:
-      "bg-[#10B981]/10 hover:bg-[#10B981]/20 border-[#10B981]/30 text-[#059669]",
+    color: "bg-accent/10 hover:bg-accent/20 border-accent/30 text-accent",
   },
   {
     name: "Gaming",
     icon: "🎮",
     href: "/phones?category=gaming",
-    color:
-      "bg-[#00843D]/10 hover:bg-[#00843D]/20 border-[#00843D]/30 text-[#00843D]",
+    color: "bg-primary/10 hover:bg-primary/15 border-primary/30 text-primary",
   },
   {
     name: "Flagship",
@@ -42,7 +40,7 @@ export default function QuickCategories() {
   return (
     <>
       <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-        Mabilisang Hanap:
+        Quick links:
       </span>
       {quickCategories.map((cat) => (
         <Link
@@ -56,9 +54,9 @@ export default function QuickCategories() {
       ))}
       <Link
         href="/phones"
-        className="inline-flex items-center gap-1 text-xs font-semibold text-[#00843D] hover:text-[#006B31] transition-colors"
+        className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
       >
-        Tingnan lahat
+        View all
         <ArrowRight className="h-3 w-3" />
       </Link>
     </>

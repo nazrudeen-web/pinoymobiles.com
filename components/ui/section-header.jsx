@@ -7,9 +7,9 @@ export default function SectionHeader({
   label,
   title,
   description,
-  labelColor = "text-[#00843D]",
+  labelColor = "text-primary",
   linkHref = "/phones",
-  linkText = "Tingnan Lahat",
+  linkText = "View all",
   onScrollLeft,
   onScrollRight,
   showNavigation = true,
@@ -26,7 +26,7 @@ export default function SectionHeader({
           {title}
         </h2>
         {description && (
-          <p className="mt-1 text-xs md:text-sm text-slate-600">
+          <p className="mt-1 text-xs md:text-sm text-muted-foreground">
             {description}
           </p>
         )}

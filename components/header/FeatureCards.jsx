@@ -4,7 +4,7 @@ const features = [
   {
     icon: Zap,
     title: "Real-time Prices",
-    description: "Updated hourly from verified sellers across the UAE",
+    description: "Compare prices across stores in one place",
     bgColor: "bg-muted",
     iconColor: "text-primary",
   },
@@ -17,8 +17,8 @@ const features = [
   },
   {
     icon: Users,
-    title: "Trusted Sellers",
-    description: "All sellers verified, rated, and backed by buyer protection",
+    title: "Simple Comparison",
+    description: "See key specs and prices side-by-side",
     bgColor: "bg-muted",
     iconColor: "text-primary",
   },

@@ -1,4 +1,4 @@
-import { Store, TrendingDown, ExternalLink, Check } from "lucide-react";
+import { Store, TrendingDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/format";
 
@@ -12,7 +12,6 @@ export default function PriceComparison({ price, phoneName }) {
       shipping: "Free",
       delivery: "1-2 days",
       stock: "In stock",
-      verified: true,
     },
     {
       name: "Noon",
@@ -21,7 +20,6 @@ export default function PriceComparison({ price, phoneName }) {
       shipping: "AED 10",
       delivery: "1-3 days",
       stock: "In stock",
-      verified: true,
     },
     {
       name: "Jumbo Electronics",
@@ -30,7 +28,6 @@ export default function PriceComparison({ price, phoneName }) {
       shipping: "AED 15",
       delivery: "2-4 days",
       stock: "Limited stock",
-      verified: true,
     },
     {
       name: "Sharaf DG",
@@ -39,7 +36,6 @@ export default function PriceComparison({ price, phoneName }) {
       shipping: "Free",
       delivery: "1-3 days",
       stock: "In stock",
-      verified: true,
     },
   ];
 
@@ -56,10 +52,10 @@ export default function PriceComparison({ price, phoneName }) {
                 Compare Prices
               </h2>
               <p className="text-sm text-slate-500 mt-0.5">
-                {retailers.length} offers from verified sellers
+                {retailers.length} offers across stores
               </p>
             </div>
-            <div className="flex items-center gap-2 text-green-600">
+            <div className="flex items-center gap-2 text-primary">
               <TrendingDown className="h-5 w-5" />
               <span className="text-sm font-semibold">
                 Save up to {formatCurrency(price * 0.07)}
@@ -74,7 +70,7 @@ export default function PriceComparison({ price, phoneName }) {
             <div
               key={index}
               className={`px-6 py-4 hover:bg-slate-50 transition-colors ${
-                retailer.price === lowestPrice ? "bg-green-50/30" : ""
+                retailer.price === lowestPrice ? "bg-primary/5" : ""
               }`}
             >
               <div className="flex items-center gap-4">
@@ -86,12 +82,6 @@ export default function PriceComparison({ price, phoneName }) {
                       <h3 className="font-semibold text-slate-900">
                         {retailer.name}
                       </h3>
-                      {retailer.verified && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-100 text-xs font-medium text-blue-700">
-                          <Check className="h-3 w-3" />
-                          Verified
-                        </span>
-                      )}
                     </div>
                     <div className="flex items-center gap-4 mt-1 text-xs text-slate-500">
                       <span className="flex items-center gap-1">
@@ -101,7 +91,7 @@ export default function PriceComparison({ price, phoneName }) {
                       <span
                         className={
                           retailer.stock === "In stock"
-                            ? "text-green-600"
+                            ? "text-primary"
                             : "text-amber-600"
                         }
                       >
@@ -115,7 +105,7 @@ export default function PriceComparison({ price, phoneName }) {
                 <div className="text-right flex items-center gap-4">
                   <div>
                     {retailer.price === lowestPrice && (
-                      <span className="inline-block px-2 py-0.5 rounded-md bg-green-600 text-white text-xs font-bold mb-1">
+                      <span className="inline-block px-2 py-0.5 rounded-md bg-primary text-primary-foreground text-xs font-bold mb-1">
                         LOWEST PRICE
                       </span>
                     )}

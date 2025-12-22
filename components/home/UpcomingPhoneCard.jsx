@@ -6,13 +6,7 @@ export default function UpcomingPhoneCard({ phone, index = 0 }) {
   return (
     <div className="shrink-0 w-[calc(100%-32px)] md:w-[calc(33.333%-11px)] snap-start">
       <div className="relative bg-card rounded-2xl border border-border p-5 hover:shadow-lg hover:border-primary/30 transition-all duration-300 h-full uae-card-hover">
-        {/* Countdown Badge */}
-        <div className="absolute top-3 right-3 z-10">
-          <div className="flex items-center gap-1 rounded-full bg-foreground px-2.5 py-1 text-[10px] font-bold text-background">
-            <Clock className="h-3 w-3" />
-            <span>15 araw</span>
-          </div>
-        </div>
+        {/* Countdown badge removed */}
 
         <div className="flex gap-4">
           {/* Phone Image */}
@@ -39,7 +33,7 @@ export default function UpcomingPhoneCard({ phone, index = 0 }) {
             </h3>
 
             <p className="text-[10px] text-muted-foreground mb-3">
-              Inaasahan: {phone.launchDate}
+              Expected: {phone.launchDate}
             </p>
 
             <div className="space-y-1">
@@ -59,14 +53,14 @@ export default function UpcomingPhoneCard({ phone, index = 0 }) {
         {/* Price Footer */}
         <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
           <div>
-            <p className="text-[10px] text-muted-foreground">Inaasahang Presyo</p>
+            <p className="text-[10px] text-muted-foreground">Expected price</p>
             <p className="text-base font-bold text-foreground">
               {formatCurrency(phone.price)}
             </p>
           </div>
           <button className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:text-primary/80 border border-primary/30 hover:border-primary/50 px-3 py-1.5 rounded-lg transition-colors">
             <Bell className="h-3 w-3" />
-            Abisuhan ako
+            Notify me
           </button>
         </div>
       </div>

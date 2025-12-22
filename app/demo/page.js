@@ -12,7 +12,7 @@ export default function DemoPage() {
         {/* Title Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            📺 PinoyMobiles - Demo Preview
+            📺 UAEMobileGuide - Demo Preview
           </h1>
           <p className="mt-3 text-lg text-muted-foreground max-w-2xl">
             Click any page below to preview the complete UI with demo data.

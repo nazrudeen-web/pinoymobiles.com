@@ -9,15 +9,15 @@ const legalLinks = [
 
 export default function FooterBottom() {
   return (
-    <div className="flex flex-col gap-4 text-xs text-white/70">
+    <div className="flex flex-col gap-4 text-xs text-muted-foreground">
       <div className="flex items-center gap-2">
         <UAEFlag className="w-6 h-4" />
-        <p className="text-sm font-medium text-white">
+        <p className="text-sm font-medium text-foreground">
           Made in UAE, for UAE. From the heart!
         </p>
       </div>
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <p className="text-white/60">
+        <p>
           © 2024 UAEMobileGuide. All rights reserved.
         </p>
         <div className="flex gap-6">
@@ -25,7 +25,7 @@ export default function FooterBottom() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-white/60 hover:text-[#EF3340] transition-colors"
+              className="hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>

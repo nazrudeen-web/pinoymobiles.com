@@ -1,9 +1,9 @@
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 
-// DM Sans - Clean, modern, professional look for UAE
-const dmSans = DM_Sans({
+// Poppins - Modern, friendly, highly legible
+const poppins = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${poppins.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <div className="flex flex-col min-h-screen">
           <div className="flex-1">{children}</div>

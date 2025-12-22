@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${blog.title} | PinoyMobiles`,
+    title: `${blog.title} | UAEMobileGuide`,
     description: blog.excerpt,
   };
 }

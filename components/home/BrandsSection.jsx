@@ -10,7 +10,7 @@ const brandColors = {
   Apple: "hover:bg-black hover:border-black",
   Samsung: "hover:bg-blue-600 hover:border-blue-600",
   Xiaomi: "hover:bg-orange-600 hover:border-orange-600",
-  OPPO: "hover:bg-green-600 hover:border-green-600",
+  OPPO: "hover:bg-primary hover:border-primary",
   Vivo: "hover:bg-blue-500 hover:border-blue-500",
   Realme: "hover:bg-yellow-500 hover:border-yellow-500",
   POCO: "hover:bg-red-600 hover:border-red-600",
@@ -37,14 +37,14 @@ export default function BrandsHorizontal() {
     <section className="mx-auto mt-16 w-full max-w-7xl px-4 md:px-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#00843D]">
+          <p className="text-xs font-semibold uppercase tracking-wide text-primary">
             🛒 UAE Best Sellers
           </p>
           <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
             Top Brands in UAE
           </h2>
           <p className="mt-2 text-xs md:text-sm text-muted-foreground">
-            Compare prices and deals from verified sellers for Apple, Samsung,
+            Compare prices and deals across stores for Apple, Samsung,
             Xiaomi, and other popular brands.
           </p>
         </div>
@@ -107,9 +107,9 @@ export default function BrandsHorizontal() {
       <div className="mt-6 flex items-center justify-center md:justify-start">
         <Link
           href="/phones"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-[#00843D] to-[#006B31] hover:from-[#006B31] hover:to-[#00843D] text-white text-sm font-semibold transition-colors shadow-lg shadow-[#00843D]/30 hover:shadow-[#00843D]/50 uae-shine"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-primary to-primary/85 hover:from-primary/90 hover:to-primary text-primary-foreground text-sm font-semibold transition-colors shadow-lg shadow-primary/20 uae-shine"
         >
-          Tingnan Lahat ng Brands
+          View all brands
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

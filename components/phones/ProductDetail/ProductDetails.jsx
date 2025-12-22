@@ -47,7 +47,7 @@ export default function ProductDetails({ phone, detailsRef }) {
                   key={i}
                   className="flex items-start gap-2 text-sm text-slate-600"
                 >
-                  <Check className="h-4 w-4 text-emerald-500 mt-0.5 shrink-0" />
+                  <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                   {highlight}
                 </li>
               ))}

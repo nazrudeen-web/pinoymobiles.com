@@ -6,7 +6,7 @@ export function RetailerCard({ retailer, isLowest }) {
     <div
       className={`bg-white rounded-xl md:rounded-2xl border transition-all hover:shadow-md ${
         isLowest
-          ? "border-emerald-200 ring-1 ring-emerald-100"
+          ? "border-accent/30 ring-1 ring-accent/10"
           : "border-slate-200"
       }`}
     >
@@ -28,12 +28,7 @@ export function RetailerCard({ retailer, isLowest }) {
                 {retailer.name}
               </h3>
               <div className="flex items-center gap-1 text-xs text-slate-500">
-                {retailer.verified && (
-                  <>
-                    <Check className="h-3 w-3 text-emerald-500" />
-                    <span className="text-emerald-600">Verified</span>
-                  </>
-                )}
+                {retailer.verified && null}
               </div>
             </div>
           </div>
@@ -53,7 +48,7 @@ export function RetailerCard({ retailer, isLowest }) {
               <p
                 className={`font-medium ${
                   retailer.stock === "In stock"
-                    ? "text-emerald-600"
+                    ? "text-accent"
                     : "text-amber-600"
                 }`}
               >
@@ -84,9 +79,9 @@ export function RetailerCard({ retailer, isLowest }) {
         </div>
       </div>
       {isLowest && (
-        <div className="bg-emerald-50 px-4 py-2 md:px-6 md:py-2.5 border-t border-emerald-100 flex items-center gap-2">
-          <Zap className="h-4 w-4 text-emerald-600" />
-          <span className="text-xs md:text-sm text-emerald-700 font-medium">
+        <div className="bg-accent/10 px-4 py-2 md:px-6 md:py-2.5 border-t border-accent/20 flex items-center gap-2">
+          <Zap className="h-4 w-4 text-accent" />
+          <span className="text-xs md:text-sm text-accent font-medium">
             Best price available now
           </span>
         </div>
