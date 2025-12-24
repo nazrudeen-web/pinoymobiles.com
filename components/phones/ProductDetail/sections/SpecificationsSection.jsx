@@ -1,75 +1,76 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Monitor, Cpu, Camera, Battery, Zap } from "lucide-react";
 import SpecTable from "../SpecTable";
+
+const SPEC_CONFIG = [
+  { key: "display", label: "Display", icon: Monitor },
+  { key: "processor", label: "Processor", icon: Cpu },
+  { key: "camera", label: "Camera", icon: Camera },
+  { key: "battery", label: "Battery", icon: Battery },
+];
 
 export default function SpecificationsSection({ phone }) {
   const [showSpecs, setShowSpecs] = useState(false);
 
   return (
     <section>
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h2 className="text-lg font-bold text-foreground">Specifications</h2>
-          <p className="text-xs text-muted-foreground mt-1">
-            Quick view first. Expand for full details.
+      <div className="bg-card rounded-2xl border border-border overflow-hidden">
+        {/* Header */}
+        <div className="px-5 py-4 border-b border-border">
+          <h2 className="text-lg font-bold text-foreground">
+            Key Specifications
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Quick overview of main features
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => setShowSpecs((v) => !v)}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-primary shrink-0"
-        >
-          {showSpecs ? "Hide full" : "Show full"}
-          <ChevronDown
-            className={`h-4 w-4 transition-transform ${showSpecs ? "rotate-180" : ""}`}
-          />
-        </button>
-      </div>
 
-      <div className="mt-4 rounded-2xl border border-border bg-card overflow-hidden">
-        <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
-          <div className="p-4">
-            <p className="text-[11px] font-semibold text-muted-foreground mb-1">
-              Display
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              {phone?.specs?.display || "—"}
-            </p>
-          </div>
-          <div className="p-4">
-            <p className="text-[11px] font-semibold text-muted-foreground mb-1">
-              Processor
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              {phone?.specs?.processor || "—"}
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
-          <div className="p-4">
-            <p className="text-[11px] font-semibold text-muted-foreground mb-1">
-              Camera
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              {phone?.specs?.camera || "—"}
-            </p>
-          </div>
-          <div className="p-4">
-            <p className="text-[11px] font-semibold text-muted-foreground mb-1">
-              Battery
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              {phone?.specs?.battery || "—"}
-            </p>
-          </div>
+        {/* Specs Grid */}
+        <div className="p-4 grid gap-3 grid-cols-2 lg:grid-cols-4">
+          {SPEC_CONFIG.map((spec) => {
+            const Icon = spec.icon;
+            const value = phone?.specs?.[spec.key] || "—";
+            return (
+              <div
+                key={spec.key}
+                className="rounded-xl border border-border bg-muted/30 p-4"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Icon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {spec.label}
+                  </span>
+                </div>
+                <p className="text-sm font-semibold text-foreground line-clamp-2">
+                  {value}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {!showSpecs && (
-          <div className="px-4 py-3 text-xs text-muted-foreground bg-muted/20 border-t border-border">
-            Showing 4 key specs. Click “Show full” for complete specifications.
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowSpecs(true)}
+            className="w-full py-3.5 text-sm font-semibold text-primary hover:bg-primary/5 flex items-center justify-center gap-2 border-t border-border transition-colors"
+          >
+            <span>View Full Specifications</span>
+            <ChevronDown className="h-4 w-4" />
+          </button>
+        )}
+
+        {showSpecs && (
+          <button
+            type="button"
+            onClick={() => setShowSpecs(false)}
+            className="w-full py-3.5 text-sm font-semibold text-primary hover:bg-primary/5 flex items-center justify-center gap-2 border-t border-border transition-colors"
+          >
+            <span>Hide Full Specifications</span>
+            <ChevronDown className="h-4 w-4 rotate-180" />
+          </button>
         )}
       </div>
 

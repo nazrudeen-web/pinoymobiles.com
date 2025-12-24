@@ -22,101 +22,99 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
     .slice(0, 10);
 
   return (
-    <section className="scroll-mt-32 md:scroll-mt-36">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Alternatives
-          </p>
-          <h2 className="mt-1 text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Alternatives you should consider
-          </h2>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              const container = document.getElementById("similar-carousel");
-              if (container)
-                container.scrollBy({
-                  left: -container.offsetWidth * 0.8,
-                  behavior: "smooth",
-                });
-            }}
-            className="h-8 w-8 rounded-full border border-border bg-card hover:bg-muted/40 flex items-center justify-center transition-colors"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="h-4 w-4 text-muted-foreground" />
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              const container = document.getElementById("similar-carousel");
-              if (container)
-                container.scrollBy({
-                  left: container.offsetWidth * 0.8,
-                  behavior: "smooth",
-                });
-            }}
-            className="h-8 w-8 rounded-full border border-border bg-card hover:bg-muted/40 flex items-center justify-center transition-colors"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="h-4 w-4 text-muted-foreground" />
-          </button>
-          <Link
-            href="/phones"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground hidden md:flex items-center gap-1 ml-2"
-          >
-            View All
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+    <section className="bg-card rounded-2xl border border-border overflow-hidden">
+      {/* Header */}
+      <div className="px-5 py-4 border-b border-border">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="text-lg font-bold text-foreground">
+              Alternatives You Should Consider
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {pool.length} similar phones in your range
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                const container = document.getElementById("similar-carousel");
+                if (container)
+                  container.scrollBy({
+                    left: -container.offsetWidth * 0.8,
+                    behavior: "smooth",
+                  });
+              }}
+              className="h-8 w-8 rounded-full border border-border bg-background hover:bg-muted flex items-center justify-center transition-colors"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="h-4 w-4 text-muted-foreground" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const container = document.getElementById("similar-carousel");
+                if (container)
+                  container.scrollBy({
+                    left: container.offsetWidth * 0.8,
+                    behavior: "smooth",
+                  });
+              }}
+              className="h-8 w-8 rounded-full border border-border bg-background hover:bg-muted flex items-center justify-center transition-colors"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+            </button>
+            <Link
+              href="/phones"
+              className="hidden md:inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors ml-2"
+            >
+              View All
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
-      <div className="relative">
+
+      {/* Carousel */}
+      <div className="p-4">
         <div
           id="similar-carousel"
-          className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+          className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory scroll-smooth"
         >
           {pool.map((similarPhone, index) => {
             return (
-                <Link
-                  key={similarPhone.slug}
-                  href={`/phones/${similarPhone.slug}`}
-                  className="shrink-0 w-[calc(50%-8px)] md:w-[calc(20%-13px)] group snap-start"
-                >
-                  <div
-                    className="relative bg-card rounded-2xl border border-border p-4 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div
-                      className="relative h-40 md:h-48 flex items-center justify-center bg-muted/30 rounded-xl mb-3 overflow-hidden"
-                    >
-                      <Image
-                        src={`/mobile${(index % 5) + 1}.jpg`}
-                        alt={similarPhone.name}
-                        fill
-                        className="object-contain p-4"
-                        sizes="(max-width: 768px) 160px, 200px"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-semibold text-muted-foreground uppercase">
-                          {similarPhone.brand}
-                        </span>
-                      </div>
-                      <h3
-                        className="text-sm font-semibold text-foreground line-clamp-2 transition-colors min-h-10 group-hover:text-primary"
-                      >
-                        {similarPhone.name}
-                      </h3>
-                      <div className="pt-2 border-t border-border">
-                        <p className="text-lg font-bold text-foreground">
-                          {formatCurrency(similarPhone.price)}
-                        </p>
-                      </div>
+              <Link
+                key={similarPhone.slug}
+                href={`/phones/${similarPhone.slug}`}
+                className="shrink-0 w-[calc(50%-8px)] md:w-[calc(20%-13px)] group snap-start"
+              >
+                <div className="bg-background rounded-xl border border-border p-4 hover:border-foreground/20 hover:shadow-md transition-all h-full">
+                  <div className="relative h-36 md:h-44 flex items-center justify-center bg-muted/30 rounded-lg mb-3 overflow-hidden">
+                    <Image
+                      src={`/mobile${(index % 5) + 1}.jpg`}
+                      alt={similarPhone.name}
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 768px) 160px, 200px"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-semibold text-muted-foreground uppercase">
+                      {similarPhone.brand}
+                    </span>
+                    <h3 className="text-sm font-semibold text-foreground line-clamp-2 min-h-10">
+                      {similarPhone.name}
+                    </h3>
+                    <div className="pt-3 border-t border-border">
+                      <p className="text-lg font-bold text-foreground">
+                        {formatCurrency(similarPhone.price)}
+                      </p>
                     </div>
                   </div>
-                </Link>
+                </div>
+              </Link>
             );
           })}
         </div>

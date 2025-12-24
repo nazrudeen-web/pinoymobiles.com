@@ -57,45 +57,50 @@ export function ProductImageSection({
   phone,
   selectedImage,
   setSelectedImage,
+  images = [1, 2, 3, 4], // Can pass custom images array
 }) {
+  const hasMultipleImages = images.length > 1;
+
   return (
-    <div className="h-full flex flex-col">
-      <div className="relative bg-muted/20 rounded-xl md:rounded-2xl overflow-hidden flex-1 flex flex-col">
-        <div className="relative h-56 md:h-[320px] lg:h-[360px] flex items-center justify-center p-4 md:p-6">
-          <Image
-            src={`/mobile${selectedImage}.jpg`}
-            alt={phone.name}
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 224px, (max-width: 1024px) 320px, 360px"
-          />
-        </div>
+    <div className="h-full flex flex-col bg-card border border-border rounded-xl overflow-hidden">
+      {/* Main image */}
+      <div className="relative bg-muted/20 flex-1 min-h-48 md:min-h-56 flex items-center justify-center p-4">
+        <Image
+          src={`/mobile${selectedImage}.jpg`}
+          alt={phone.name}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
+        />
       </div>
 
-      <div className="flex gap-2 mt-3 md:mt-4 justify-center md:justify-start overflow-x-auto md:overflow-visible pb-1 scrollbar-hide">
-        {[1, 2, 3, 4].map((i) => (
-          <button
-            type="button"
-            key={i}
-            onClick={() => setSelectedImage(i)}
-            className={`w-12 h-12 md:w-14 md:h-14 rounded-lg md:rounded-xl border-2 transition-all ${
-              selectedImage === i
-                ? "border-primary bg-muted/40"
-                : "border-border hover:border-border/80 bg-card"
-            }`}
-          >
-            <div className="relative w-full h-full p-1">
-              <Image
-                src={`/mobile${i}.jpg`}
-                alt={`View ${i}`}
-                fill
-                className="object-contain"
-                sizes="56px"
-              />
-            </div>
-          </button>
-        ))}
-      </div>
+      {/* Thumbnails - only show if multiple images */}
+      {hasMultipleImages && (
+        <div className="flex gap-2 p-3 justify-center border-t border-border bg-muted/10">
+          {images.map((i) => (
+            <button
+              type="button"
+              key={i}
+              onClick={() => setSelectedImage(i)}
+              className={`w-10 h-10 md:w-11 md:h-11 rounded-lg border-2 transition-all shrink-0 ${
+                selectedImage === i
+                  ? "border-primary bg-background"
+                  : "border-transparent hover:border-primary/50 bg-background/50"
+              }`}
+            >
+              <div className="relative w-full h-full p-0.5">
+                <Image
+                  src={`/mobile${i}.jpg`}
+                  alt={`View ${i}`}
+                  fill
+                  className="object-contain"
+                  sizes="44px"
+                />
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

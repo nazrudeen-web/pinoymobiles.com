@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 
 export default function CompareSimilarPriceSection({
@@ -12,47 +12,57 @@ export default function CompareSimilarPriceSection({
 
   return (
     <section className="rounded-2xl border border-border bg-card overflow-hidden">
-      <div className="px-5 py-4 bg-muted/30 flex items-center justify-between gap-4">
-        <div>
-          <h2 className="text-base md:text-lg font-bold text-foreground">
-            Compare with similar price
-          </h2>
-          <p className="text-xs text-muted-foreground mt-1">
-            Compare 3 phones around the same budget.
-          </p>
-        </div>
+      {/* Header */}
+      <div className="px-5 py-4 border-b border-border">
+        <h2 className="text-lg font-bold text-foreground">
+          Compare Similar Phones
+        </h2>
+        <p className="mt-1 text-xs text-muted-foreground">
+          {compareCandidates.length} alternatives in your budget range
+        </p>
       </div>
 
-      <div className="p-4 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Comparison cards */}
+      <div className="p-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {compareCandidates.map((p) => (
           <Link
             key={p.slug}
             href={`/compare?phones=${encodeURIComponent(`${phone.slug},${p.slug}`)}`}
-            className="group flex items-center gap-3 rounded-xl border border-border bg-background hover:bg-muted/30 transition-colors p-3"
+            className="group rounded-xl border border-border bg-background hover:border-foreground/20 hover:shadow-md transition-all"
           >
-            <div className="relative h-14 w-14 rounded-lg overflow-hidden border border-border bg-muted/10 shrink-0">
-              <Image
-                src={compareDemoImageSrc}
-                alt={p.name}
-                fill
-                sizes="56px"
-                className="object-contain p-2"
-              />
-            </div>
+            <div className="p-4">
+              {/* Phone image */}
+              <div className="relative h-32 mb-4 rounded-lg bg-muted/30 overflow-hidden flex items-center justify-center">
+                <Image
+                  src={compareDemoImageSrc}
+                  alt={p.name}
+                  fill
+                  sizes="200px"
+                  className="object-contain p-4"
+                />
+              </div>
 
-            <div className="min-w-0 flex-1">
-              <div className="text-sm font-semibold text-foreground line-clamp-1">
-                {p.name}
+              {/* Phone info */}
+              <div className="space-y-1">
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase">
+                  {p.brand}
+                </div>
+                <h3 className="text-sm font-semibold text-foreground line-clamp-2 min-h-[2.5rem]">
+                  {p.name}
+                </h3>
+                <p className="text-xs text-muted-foreground line-clamp-1">
+                  {p.specs?.processor || p.specs?.display || ""}
+                </p>
               </div>
-              <div className="mt-1 text-xs text-muted-foreground line-clamp-1">
-                {p.specs?.processor || p.specs?.display || p.category || ""}
-              </div>
-              <div className="mt-2 flex items-center justify-between gap-3">
-                <div className="text-sm font-bold text-foreground whitespace-nowrap">
+
+              {/* Price and CTA */}
+              <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+                <div className="text-lg font-bold text-foreground">
                   {typeof p.price === "number" ? formatCurrency(p.price) : "—"}
                 </div>
-                <div className="inline-flex items-center gap-1 text-xs font-semibold text-primary whitespace-nowrap">
-                  Compare <ExternalLink className="h-3.5 w-3.5" />
+                <div className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:text-primary/80 transition-colors">
+                  Compare
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </div>
               </div>
             </div>
