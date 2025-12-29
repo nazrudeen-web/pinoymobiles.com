@@ -24,7 +24,7 @@ export default function UpcomingPhoneCard({ phone, index = 0 }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[10px] font-semibold text-muted-foreground uppercase">
-                {phone.brand}
+                {typeof phone.brand === 'string' ? phone.brand : (phone.brand?.name || '')}
               </span>
             </div>
 
@@ -55,7 +55,7 @@ export default function UpcomingPhoneCard({ phone, index = 0 }) {
           <div>
             <p className="text-[10px] text-muted-foreground">Expected price</p>
             <p className="text-base font-bold text-foreground">
-              {formatCurrency(phone.price)}
+              {formatCurrency(phone.best_price ?? phone.price ?? 0)}
             </p>
           </div>
           <button className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:text-primary/80 border border-primary/30 hover:border-primary/50 px-3 py-1.5 rounded-lg transition-colors">

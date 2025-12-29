@@ -2,12 +2,9 @@
 
 import PhoneCarousel from "./PhoneCarousel";
 import CarouselPhoneCard from "./CarouselPhoneCard";
-import { phones } from "@/lib/data/phones";
 
-export default function PopularPhones() {
-  const popular = phones
-    .filter((p) => ["Flagship", "Mid-Range"].includes(p.category))
-    .slice(0, 6);
+export default function PopularPhones({ phones = [] }) {
+  const popular = phones.slice(0, 10);
 
   return (
     <PhoneCarousel

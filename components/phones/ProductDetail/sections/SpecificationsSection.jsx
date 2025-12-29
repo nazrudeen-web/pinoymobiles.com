@@ -5,14 +5,17 @@ import { ChevronDown, Monitor, Cpu, Camera, Battery, Zap } from "lucide-react";
 import SpecTable from "../SpecTable";
 
 const SPEC_CONFIG = [
-  { key: "display", label: "Display", icon: Monitor },
-  { key: "processor", label: "Processor", icon: Cpu },
-  { key: "camera", label: "Camera", icon: Camera },
-  { key: "battery", label: "Battery", icon: Battery },
+  { key: "display", label: "Display", icon: Monitor, highlight: true, color: "text-blue-500" },
+  { key: "processor", label: "Processor", icon: Cpu, highlight: true, color: "text-orange-500" },
+  { key: "camera", label: "Camera", icon: Camera, highlight: false, color: "text-muted-foreground" },
+  { key: "battery", label: "Battery", icon: Battery, highlight: true, color: "text-green-500" },
 ];
 
 export default function SpecificationsSection({ phone }) {
   const [showSpecs, setShowSpecs] = useState(false);
+
+  // Use key_specifications from Supabase (sorted by sort_order)
+  const keySpecs = Array.isArray(phone?.key_specifications) ? phone.key_specifications : [];
 
   return (
     <section>
@@ -27,28 +30,50 @@ export default function SpecificationsSection({ phone }) {
           </p>
         </div>
 
-        {/* Specs Grid */}
+        {/* Specs Grid - Use real data from key_specifications */}
         <div className="p-4 grid gap-3 grid-cols-2 lg:grid-cols-4">
-          {SPEC_CONFIG.map((spec) => {
-            const Icon = spec.icon;
-            const value = phone?.specs?.[spec.key] || "—";
-            return (
+          {keySpecs.length > 0 ? (
+            keySpecs.map((spec) => {
+              const Icon = SPEC_CONFIG.find(s => s.label.toLowerCase().includes(spec.title?.toLowerCase() || ''))?.icon || Monitor;
+              const color = SPEC_CONFIG.find(s => s.label.toLowerCase().includes(spec.title?.toLowerCase() || ''))?.color || 'text-muted-foreground';
+              const highlight = SPEC_CONFIG.find(s => s.label.toLowerCase().includes(spec.title?.toLowerCase() || ''))?.highlight || false;
+              
+              return (
+                <div
+                  key={spec.id}
+                  className={`rounded-xl border p-4 ${highlight ? "border-border bg-muted/50" : "border-border bg-muted/30"}`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className={`h-4 w-4 ${color}`} />
+                    <span className={`text-xs font-medium ${highlight ? "text-foreground" : "text-muted-foreground"}`}>
+                      {spec.title}
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold text-foreground line-clamp-2">
+                    {spec.value}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            // Fallback if no key specs
+            SPEC_CONFIG.map((spec) => (
               <div
                 key={spec.key}
-                className="rounded-xl border border-border bg-muted/30 p-4"
+                className={`rounded-xl border p-4 ${spec.highlight ? "border-border bg-muted/50" : "border-border bg-muted/30"}`}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Icon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-xs font-medium text-muted-foreground">
+                  <spec.icon className={`h-4 w-4 ${spec.color}`} />
+                  <span className={`text-xs font-medium ${spec.highlight ? "text-foreground" : "text-muted-foreground"}`}>
                     {spec.label}
                   </span>
                 </div>
                 <p className="text-sm font-semibold text-foreground line-clamp-2">
-                  {value}
+                  —
                 </p>
               </div>
-            );
-          })}
+            ))
+          )}
         </div>
 
         {!showSpecs && (
@@ -76,7 +101,7 @@ export default function SpecificationsSection({ phone }) {
 
       {showSpecs && (
         <div className="mt-4">
-          <SpecTable specs={phone.specs} />
+          <SpecTable specGroups={phone.specifications_grouped} />
         </div>
       )}
     </section>

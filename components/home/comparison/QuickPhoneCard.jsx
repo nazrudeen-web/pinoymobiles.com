@@ -6,6 +6,9 @@ import { Star } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 
 export default function QuickPhoneCard({ phone, index }) {
+  const brandName = typeof phone.brand === "string" ? phone.brand : phone.brand?.name || "";
+  const rating = phone.expert_score ?? phone.rating ?? null;
+  const price = phone.best_price ?? phone.price ?? 0;
   return (
     <Link
       href={`/phones/${phone.slug}`}
@@ -27,12 +30,12 @@ export default function QuickPhoneCard({ phone, index }) {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-semibold text-slate-500 uppercase">
-              {phone.brand}
+              {brandName}
             </span>
             <div className="flex items-center gap-0.5">
               <Star className="h-3 w-3 fill-[#EF3340] text-[#EF3340]" />
               <span className="text-[10px] font-semibold text-slate-700">
-                {phone.rating}
+                {rating ?? ""}
               </span>
             </div>
           </div>
@@ -43,7 +46,7 @@ export default function QuickPhoneCard({ phone, index }) {
 
           <div className="pt-2 border-t border-slate-100">
             <p className="text-lg font-bold text-[#00843D]">
-              {formatCurrency(phone.price)}
+              {formatCurrency(price)}
             </p>
           </div>
         </div>

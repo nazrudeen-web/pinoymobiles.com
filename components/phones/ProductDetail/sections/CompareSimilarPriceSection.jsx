@@ -18,12 +18,12 @@ export default function CompareSimilarPriceSection({
           Compare Similar Phones
         </h2>
         <p className="mt-1 text-xs text-muted-foreground">
-          {compareCandidates.length} alternatives in your budget range
+          {compareCandidates.length} alternatives • Similar price & performance
         </p>
       </div>
 
-      {/* Comparison cards */}
-      <div className="p-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Comparison cards - max 4 phones */}
+      <div className="p-4 grid gap-4 grid-cols-2 lg:grid-cols-4">
         {compareCandidates.map((p) => (
           <Link
             key={p.slug}
@@ -45,13 +45,13 @@ export default function CompareSimilarPriceSection({
               {/* Phone info */}
               <div className="space-y-1">
                 <div className="text-[10px] font-semibold text-muted-foreground uppercase">
-                  {p.brand}
+                  {typeof p.brand === "string" ? p.brand : p.brand?.name}
                 </div>
                 <h3 className="text-sm font-semibold text-foreground line-clamp-2 min-h-[2.5rem]">
                   {p.name}
                 </h3>
                 <p className="text-xs text-muted-foreground line-clamp-1">
-                  {p.specs?.processor || p.specs?.display || ""}
+                  {p.key_specifications?.[0]?.value || ""}
                 </p>
               </div>
 

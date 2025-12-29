@@ -92,9 +92,10 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
                 <div className="bg-background rounded-xl border border-border p-4 hover:border-foreground/20 hover:shadow-md transition-all h-full">
                   <div className="relative h-36 md:h-44 flex items-center justify-center bg-muted/30 rounded-lg mb-3 overflow-hidden">
                     <Image
-                      src={`/mobile${(index % 5) + 1}.jpg`}
+                      src={similarPhone.main_image || `/mobile${(index % 5) + 1}.jpg`}
                       alt={similarPhone.name}
                       fill
+                      unoptimized
                       className="object-contain p-4"
                       sizes="(max-width: 768px) 160px, 200px"
                     />
@@ -102,14 +103,14 @@ export default function SimilarCarousel({ currentPhone, allPhones }) {
 
                   <div className="space-y-2">
                     <span className="text-[10px] font-semibold text-muted-foreground uppercase">
-                      {similarPhone.brand}
+                      {typeof similarPhone.brand === 'string' ? similarPhone.brand : (similarPhone.brand?.name || '')}
                     </span>
                     <h3 className="text-sm font-semibold text-foreground line-clamp-2 min-h-10">
                       {similarPhone.name}
                     </h3>
                     <div className="pt-3 border-t border-border">
                       <p className="text-lg font-bold text-foreground">
-                        {formatCurrency(similarPhone.price)}
+                        {formatCurrency(similarPhone.best_price ?? similarPhone.price ?? 0)}
                       </p>
                     </div>
                   </div>

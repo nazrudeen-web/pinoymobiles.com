@@ -1,6 +1,7 @@
 "use client";
 import { Check } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
+import { useRef } from "react";
 
 // Color options with their display values
 const colorMap = {
@@ -31,32 +32,44 @@ const colorMap = {
 
 export default function VariantSelector({
   variants,
+  colors,
   selectedVariant,
+  selectedColorName,
   onVariantChange,
+  onColorChange,
+  onColorImageChange,
   basePrice,
+  selectedPrice,
 }) {
+  const isInitialMount = useRef(true);
+  
   // Extract unique storage options and colors from variants
   const storageOptions = [...new Set(variants?.map((v) => v.storage) || [])];
-  const colorOptions = [...new Set(variants?.map((v) => v.color) || [])];
+  const colorOptions = Array.isArray(colors) && colors.length > 0
+    ? colors.map((c) => c.color_name)
+    : [...new Set(variants?.map((v) => v.color).filter(Boolean) || [])];
 
-  // Get current selections
+  // Use the selectedColorName prop directly instead of deriving from variant
+  const currentColor = selectedColorName || colorOptions[0];
   const currentStorage = selectedVariant?.storage || storageOptions[0];
-  const currentColor = selectedVariant?.color || colorOptions[0];
 
   // Find matching variant for current selections
   const findVariant = (storage, color) => {
+    const colorHex = Array.isArray(colors)
+      ? colors.find((c) => c.color_name === color)?.color_hex
+      : undefined;
+
     return (
-      variants?.find((v) => v.storage === storage && v.color === color) ||
+      variants?.find((v) => v.storage === storage && (v.color === color || (colorHex && v.color_hex === colorHex))) ||
       variants?.find((v) => v.storage === storage) ||
       variants?.[0]
     );
   };
 
-  // Get available colors for selected storage
-  const availableColors =
-    variants
-      ?.filter((v) => v.storage === currentStorage)
-      ?.map((v) => v.color) || [];
+  // Get available colors for selected storage, preserving provided order
+  const availableColors = Array.isArray(colors) && colors.length > 0
+    ? colors.map((c) => c.color_name)
+    : (variants?.filter((v) => v.storage === currentStorage)?.map((v) => v.color) || []);
 
   const handleStorageChange = (storage) => {
     const newVariant = findVariant(storage, currentColor);
@@ -66,6 +79,20 @@ export default function VariantSelector({
   const handleColorChange = (color) => {
     const newVariant = findVariant(currentStorage, color);
     onVariantChange(newVariant);
+    onColorChange(color); // Update parent's selectedColorName
+    
+    // Mark that we're past initial mount - do this FIRST so image changes on first click
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    }
+    
+    // Change image when user clicks (after initial mount check is cleared)
+    if (Array.isArray(colors)) {
+      const match = colors.find((c) => c.color_name === color);
+      if (match?.color_image && typeof onColorImageChange === 'function') {
+        onColorImageChange(match.color_image);
+      }
+    }
   };
 
   if (!variants || variants.length === 0) {
@@ -144,7 +171,8 @@ export default function VariantSelector({
           </div>
           <div className="flex flex-wrap gap-2">
             {colorOptions.map((color) => {
-              const colorData = colorMap[color] || { name: color, hex: "#888" };
+              const colorObj = Array.isArray(colors) ? colors.find((c) => c.color_name === color) : null;
+              const colorData = colorObj ? { name: colorObj.color_name, hex: colorObj.color_hex || "#888" } : (colorMap[color] || { name: color, hex: "#888" });
               const isSelected = currentColor === color;
               const isAvailable = availableColors.includes(color);
 
@@ -202,7 +230,7 @@ export default function VariantSelector({
               Selected variant price
             </span>
             <span className="text-lg font-bold text-primary">
-              {formatCurrency(selectedVariant.price)}
+              {formatCurrency(Number.isFinite(Number(selectedPrice)) ? Number(selectedPrice) : 0)}
             </span>
           </div>
         </div>

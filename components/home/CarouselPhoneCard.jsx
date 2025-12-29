@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Heart } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 import { useState } from "react";
@@ -15,6 +14,11 @@ export default function CarouselPhoneCard({
   subtitle,
 }) {
   const [liked, setLiked] = useState(false);
+  const brandName = typeof phone.brand === "string" ? phone.brand : phone.brand?.name || "";
+  const rating = phone.expert_score ?? phone.rating ?? null;
+  const price = phone.best_price ?? phone.price ?? 0;
+  const imageSrc = phone.main_image || (phone.images?.[0]?.image_url ?? null);
+  const fallbackSrc = `/mobile${(index % 5) + 1}.jpg`;
 
   return (
     <Link
@@ -43,23 +47,31 @@ export default function CarouselPhoneCard({
         <div
           className={`relative h-40 md:h-48 flex items-center justify-center bg-linear-to-br ${imageColors} rounded-xl mb-3 overflow-hidden`}
         >
-          <Image
-            src={`/mobile${(index % 5) + 1}.jpg`}
-            alt={phone.name}
-            fill
-            className="object-contain p-4"
-            sizes="(max-width: 768px) 160px, 200px"
-          />
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={phone.name}
+              className="h-full w-full object-contain p-4"
+              loading="lazy"
+            />
+          ) : (
+            <img
+              src={fallbackSrc}
+              alt={phone.name}
+              className="h-full w-full object-contain p-4"
+              loading="lazy"
+            />
+          )}
         </div>
 
         {/* Content */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-semibold text-muted-foreground uppercase">
-              {phone.brand}
+              {brandName}
             </span>
             <span className="text-[10px] font-semibold text-muted-foreground">
-              {phone.rating}
+              {rating ?? ""}
             </span>
           </div>
 
@@ -74,7 +86,7 @@ export default function CarouselPhoneCard({
             <div className="flex items-center justify-between">
               <div>
                 <p className={`text-lg font-bold ${priceColor}`}>
-                  {formatCurrency(phone.price)}
+                  {formatCurrency(price)}
                 </p>
                 {subtitle && (
                   <p className="text-[10px] text-muted-foreground">{subtitle}</p>

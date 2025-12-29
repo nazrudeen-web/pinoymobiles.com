@@ -1,25 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { featuredBrands } from "@/lib/data/phones";
 import { useRef } from "react";
 
-const brandColors = {
-  Apple: "hover:bg-black hover:border-black",
-  Samsung: "hover:bg-blue-600 hover:border-blue-600",
-  Xiaomi: "hover:bg-orange-600 hover:border-orange-600",
-  OPPO: "hover:bg-primary hover:border-primary",
-  Vivo: "hover:bg-blue-500 hover:border-blue-500",
-  Realme: "hover:bg-yellow-500 hover:border-yellow-500",
-  POCO: "hover:bg-red-600 hover:border-red-600",
-  OnePlus: "hover:bg-red-500 hover:border-red-500",
-  Google: "hover:bg-blue-500 hover:border-blue-500",
-  Motorola: "hover:bg-red-600 hover:border-red-600",
-};
+// Removed brand-specific hover color changes; keep animation only
 
-export default function BrandsHorizontal() {
+export default function BrandsSection({ brands = [] }) {
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -74,28 +61,32 @@ export default function BrandsHorizontal() {
           ref={scrollRef}
           className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth"
         >
-          {featuredBrands.map((brand, index) => (
+          {brands.map((brand) => (
             <Link
-              key={brand}
-              href={`/phones?brand=${brand}`}
+              key={brand.id || brand.slug || brand.name}
+              href={`/phones?brand=${encodeURIComponent(brand.slug || brand.name)}`}
               className="shrink-0 w-[calc(25%-9px)] md:w-[calc(20%-12px)] lg:w-[calc(16.666%-10px)] snap-start"
             >
               <div
-                className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 uae-card-hover ${
-                  brandColors[brand] || "hover:bg-slate-100"
-                }`}
+                className={
+                  "group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-all duration-300 h-full min-h-40 uae-card-hover"
+                }
               >
                 <div className="relative h-16 w-16 md:h-20 md:w-20 group-hover:scale-125 transition-transform duration-300">
-                  <Image
-                    src={`/brand${(index % 4) + 1}.png`}
-                    alt={brand}
-                    fill
-                    className="object-contain"
-                    sizes="80px"
-                  />
+                  {brand.logo ? (
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center rounded-md bg-slate-100 text-slate-600 text-sm font-semibold">
+                      {brand.name?.[0] || "?"}
+                    </div>
+                  )}
                 </div>
-                <span className="text-xs md:text-sm font-bold text-center text-foreground group-hover:text-white transition-colors px-2">
-                  {brand}
+                <span className="text-xs md:text-sm font-bold text-center text-foreground px-2">
+                  {brand.name}
                 </span>
               </div>
             </Link>

@@ -8,6 +8,9 @@ import { useState } from "react";
 
 export default function TrendingPhoneCard({ phone, index = 0 }) {
   const [liked, setLiked] = useState(false);
+  const brandName = typeof phone.brand === "string" ? phone.brand : phone.brand?.name || "";
+  const rating = phone.expert_score ?? phone.rating ?? null;
+  const price = phone.best_price ?? phone.price ?? 0;
 
   return (
     <Link
@@ -44,12 +47,12 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-semibold text-slate-500 uppercase">
-              {phone.brand}
+              {brandName}
             </span>
             <div className="flex items-center gap-0.5">
               <Star className="h-3 w-3 fill-[#EF3340] text-[#EF3340]" />
               <span className="text-[10px] font-semibold text-slate-700">
-                {phone.rating}
+                {rating ?? ""}
               </span>
             </div>
           </div>
@@ -60,7 +63,7 @@ export default function TrendingPhoneCard({ phone, index = 0 }) {
 
           <div className="pt-2 border-t border-slate-100">
             <p className="text-lg font-bold text-primary">
-              {formatCurrency(phone.price)}
+              {formatCurrency(price)}
             </p>
             <p className="text-[10px] text-slate-500">Best price today</p>
           </div>

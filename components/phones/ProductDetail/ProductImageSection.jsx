@@ -40,10 +40,12 @@ export function ProductBreadcrumb({ phone }) {
           </Link>
           <ChevronRight className="h-3.5 w-3.5" />
           <Link
-            href={`/phones?brand=${phone.brand}`}
+            href={`/phones?brand=${
+              typeof phone.brand === 'string' ? phone.brand : (phone.brand?.slug || '')
+            }`}
             className="hover:text-primary transition-colors"
           >
-            {phone.brand}
+            {typeof phone.brand === 'string' ? phone.brand : (phone.brand?.name || '')}
           </Link>
           <ChevronRight className="h-3.5 w-3.5" />
           <span className="text-foreground font-medium">{phone.name}</span>
@@ -59,25 +61,41 @@ export function ProductImageSection({
   setSelectedImage,
   images = [1, 2, 3, 4], // Can pass custom images array
 }) {
-  const hasMultipleImages = images.length > 1;
+  // Prefer Supabase images when available, sorted strictly by sort_order
+  const supabaseImages = Array.isArray(phone.images) && phone.images.length > 0
+    ? [...phone.images].sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+    : (phone.main_image ? [{ image_url: phone.main_image, sort_order: 0 }] : []);
+
+  const hasMultipleImages = (supabaseImages.length || images.length) > 1;
 
   return (
     <div className="h-full flex flex-col bg-card border border-border rounded-xl overflow-hidden">
-      {/* Main image */}
-      <div className="relative bg-muted/20 flex-1 min-h-48 md:min-h-56 flex items-center justify-center p-4">
-        <Image
-          src={`/mobile${selectedImage}.jpg`}
-          alt={phone.name}
-          fill
-          className="object-contain"
-          sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
-        />
+      {/* Main image - reduced height for better focus on price/CTA */}
+      <div className="relative bg-muted/20 flex-1 min-h-40 md:min-h-48 flex items-center justify-center p-3">
+        {supabaseImages.length > 0 ? (
+          <Image
+            src={supabaseImages[Math.min(selectedImage - 1, supabaseImages.length - 1)].image_url}
+            alt={phone.name}
+            fill
+            unoptimized
+            className="object-contain"
+            sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
+          />
+        ) : (
+          <Image
+            src={`/mobile${selectedImage}.jpg`}
+            alt={phone.name}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
+          />
+        )}
       </div>
 
       {/* Thumbnails - only show if multiple images */}
       {hasMultipleImages && (
         <div className="flex gap-2 p-3 justify-center border-t border-border bg-muted/10">
-          {images.map((i) => (
+          {(supabaseImages.length > 0 ? supabaseImages.map((img, idx) => idx + 1) : images).map((i) => (
             <button
               type="button"
               key={i}
@@ -89,13 +107,24 @@ export function ProductImageSection({
               }`}
             >
               <div className="relative w-full h-full p-0.5">
-                <Image
-                  src={`/mobile${i}.jpg`}
-                  alt={`View ${i}`}
-                  fill
-                  className="object-contain"
-                  sizes="44px"
-                />
+                {supabaseImages.length > 0 ? (
+                  <Image
+                    src={supabaseImages[i - 1]?.image_url}
+                    alt={`View ${i}`}
+                    fill
+                    unoptimized
+                    className="object-contain"
+                    sizes="44px"
+                  />
+                ) : (
+                  <Image
+                    src={`/mobile${i}.jpg`}
+                    alt={`View ${i}`}
+                    fill
+                    className="object-contain"
+                    sizes="44px"
+                  />
+                )}
               </div>
             </button>
           ))}

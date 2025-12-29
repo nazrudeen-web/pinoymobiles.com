@@ -36,7 +36,7 @@ export default function PhoneInfoSection({ phone }) {
               <Star
                 key={i}
                 className={`h-5 w-5 ${
-                  i < Math.round(phone.rating)
+                  i < Math.round(phone.expert_score ?? phone.rating ?? 0)
                     ? "fill-amber-400 text-amber-400"
                     : "text-slate-300"
                 }`}
@@ -44,7 +44,7 @@ export default function PhoneInfoSection({ phone }) {
             ))}
           </div>
           <span className="text-sm font-bold text-slate-900">
-            {phone.rating}
+            {phone.expert_score ?? phone.rating ?? ""}
           </span>
         </div>
         <button className="text-sm text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-1">
@@ -78,7 +78,7 @@ export default function PhoneInfoSection({ phone }) {
         </div>
         <div className="flex items-baseline gap-2">
           <span className="text-3xl font-bold text-slate-900">
-            {formatCurrency(phone.price)}
+            {formatCurrency(phone.best_price ?? phone.price ?? 0)}
           </span>
           <span className="text-sm text-green-700">from 4 sellers</span>
         </div>
